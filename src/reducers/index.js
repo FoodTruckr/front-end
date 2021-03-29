@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
 import userReducer from "./userReducer";
 import truckOperatorReducer from "./truckOperatorReducer";
-import truckUserReducer from "./truckUserReducer";
+import truckDinerReducer from "./truckDinerReducer";
 
 const rootReducer = combineReducers({
   user: userReducer,
-  truckUser: truckUserReducer,
+  truckDiner: truckDinerReducer,
   truckOperator: truckOperatorReducer,
 });
 
