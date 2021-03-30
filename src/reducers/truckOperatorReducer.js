@@ -42,6 +42,27 @@ const initialState = {
       },
     ],
   },
+  singleTruck: {
+    truckId: '',
+    truckName: '',
+    currentLocation: '',
+    imageOfTruck: '',
+    cuisineTypes: [],
+    customerRatingAvg: '',
+    customerRatings: [{ username: '', starRatings: '' }],
+    arrivalTime: '',
+    arrivalDate: '',
+    departureTime: '',
+    departureDate: '',
+    menu: [
+      {
+        itemName: '',
+        itemDescription: '',
+        itemPrice: '',
+        itemPhotoUrl: '',
+      },
+    ],
+  },
 };
 
 const truckOperatorReducer = (state = initialState, action) => {
