@@ -5,6 +5,7 @@ export const GET_OPERATOR_LOADING = 'GET_OPERATOR_LOADING';
 export const GET_OPERATOR_SUCCESS = 'GET_OPERATOR_SUCCESS';
 export const GET_OPERATOR_FAILURE = 'GET_OPERATOR_FAILURE';
 
+
 // post operator new truck
 export const POST_OPERATOR_TRUCK_LOADING = 'POST_OPERATOR_TRUCK_LOADING';
 export const POST_OPERATOR_TRUCK_SUCCESS = 'POST_OPERATOR_TRUCK_SUCCESS';
@@ -66,3 +67,64 @@ export const getOperator = (operatorId) => (dispatch) => {
       console.log(err);
     });
 };
+
+export const postOperator = () => (dispatch) => {
+  dispatch({ type: POST_OPERATOR_TRUCK_LOADING });
+  axiosWithAuth()
+    .post(`/auth/new`)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const deleteOperatorTruck = (operatorId, truckId) => (dispatch) => {
+  dispatch({ type: DELETE_OPERATOR_TRUCK_LOADING });
+  axiosWithAuth()
+    .delete(`/operator/${operatorId}/${truckId}`)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const postMenuItem = (operatorId, truckId) => (dispatch) => {
+  dispatch({ type: POST_MENU_ITEM_LOADING});
+  axiosWithAuth()
+    .put(`/operator/${operatorId}/${truckId}`)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const putMenuItem = (operatorId, truckId, itemId) => (dispatch) => {
+  dispatch({ type: POST_MENU_ITEM_LOADING});
+  axiosWithAuth()
+    .put(`/operator/${operatorId}/${truckId}/${itemId}`)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const deleteMenuItem = (operatorId, truckId, itemId) => (dispatch) => {
+  dispatch({ type: DELETE_MENU_ITEM_LOADING});
+  axiosWithAuth()
+    .delete(`/operator/${operatorId}/${truckId}/${itemId}`)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
