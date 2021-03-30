@@ -67,6 +67,126 @@ const initialState = {
 
 const truckOperatorReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_OPERATOR_LOADING:
+      return {
+        ...state,
+      };
+    case GET_OPERATOR_SUCCESS:
+      return {
+        ...state,
+      };
+    case GET_OPERATOR_FAILURE:
+      return {
+        ...state,
+      };
+    case POST_OPERATOR_TRUCK_LOADING:
+      return {
+        ...state,
+      };
+    case POST_OPERATOR_TRUCK_SUCCESS:
+      return {
+        ...state,
+      };
+    case POST_OPERATOR_TRUCK_FAILURE:
+      return {
+        ...state,
+      };
+    case DELETE_OPERATOR_TRUCK_LOADING:
+      return {
+        ...state,
+      };
+    case DELETE_OPERATOR_TRUCK_SUCCESS:
+      return {
+        ...state,
+      };
+    case DELETE_OPERATOR_TRUCK_FAILURE:
+      return {
+        ...state,
+      };
+    case POST_MENU_ITEM_LOADING:
+      return {
+        ...state,
+      };
+    case POST_MENU_ITEM_SUCCESS:
+      return {
+        ...state,
+      };
+    case POST_MENU_ITEM_FAILURE:
+      return {
+        ...state,
+      };
+    case PUT_MENU_ITEM_LOADING:
+      return {
+        ...state,
+      };
+    case PUT_MENU_ITEM_SUCCESS:
+      return {
+        ...state,
+      };
+    case PUT_MENU_ITEM_FAILURE:
+      return {
+        ...state,
+      };
+    case DELETE_MENU_ITEM_LOADING:
+      return {
+        ...state,
+      };
+    case DELETE_MENU_ITEM_SUCCESS:
+      return {
+        ...state,
+      };
+    case DELETE_MENU_ITEM_FAILURE:
+      return {
+        ...state,
+      };
+    case PUT_TRUCK_INFO_LOADING:
+      return {
+        ...state,
+      };
+    case PUT_TRUCK_INFO_SUCCESS:
+      return {
+        ...state,
+      };
+    case PUT_TRUCK_INFO_FAILURE:
+      return {
+        ...state,
+      };
+    case POST_CUISINE_TYPE_LOADING:
+      return {
+        ...state,
+      };
+    case POST_CUISINE_TYPE_SUCCESS:
+      return {
+        ...state,
+      };
+    case POST_CUISINE_TYPE_FAILURE:
+      return {
+        ...state,
+      };
+    case PUT_CUISINE_TYPE_LOADING:
+      return {
+        ...state,
+      };
+    case PUT_CUISINE_TYPE_SUCCESS:
+      return {
+        ...state,
+      };
+    case PUT_CUISINE_TYPE_FAILURE:
+      return {
+        ...state,
+      };
+    case DELETE_CUISINE_TYPE_LOADING:
+      return {
+        ...state,
+      };
+    case DELETE_CUISINE_TYPE_SUCCESS:
+      return {
+        ...state,
+      };
+    case DELETE_CUISINE_TYPE_FAILURE:
+      return {
+        ...state,
+      };
     default:
       return state;
   }
