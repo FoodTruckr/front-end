@@ -191,12 +191,20 @@ const truckOperatorReducer = (state = initialState, action) => {
       return {
         ...state,
       };
-    default:
-      return state;
-    case GET_OPERATOR_LOADING:
+    case GET_CUISINE_TYPE_LOADING:
       return {
         ...state,
       };
+    case GET_CUISINE_TYPE_SUCCESS:
+      return {
+        ...state,
+      };
+    case GET_CUISINE_TYPE_FAILURE:
+      return {
+        ...state,
+      };
+    default:
+      return state;
   }
 };
 
