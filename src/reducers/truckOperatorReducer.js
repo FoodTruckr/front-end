@@ -202,10 +202,10 @@ const truckOperatorReducer = (state = initialState, action) => {
     case GET_CUISINE_TYPE_FAILURE:
       return {
         ...state,
-      }
+      };
     default:
       return state;
-    
+  }
 };
 
 export default truckOperatorReducer;
