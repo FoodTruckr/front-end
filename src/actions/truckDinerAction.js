@@ -68,3 +68,90 @@ export const getSingleTruckDiner = (truckId) => (dispatch) => {
       console.log(err);
     });
 };
+
+export const getTrucksDiner = () => (dispatch) => {
+  dispatch({ type: GET_DINER_ALL_TRUCK_LOADING });
+  axiosWithAuth()
+    .get('/trucks')
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const postFavoriteTruck = (userId) => (dispatch) => {
+  dispatch({ type: POST_FAVORITE_LOADING });
+  axiosWithAuth()
+    .post(`/diner/${userId}/favorites`)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const deleteFavoriteTruck = (truckId) => (dispatch) => {
+  dispatch({ type: DELETE_FAVORITE_LOADING });
+  axiosWithAuth()
+    .post(`/diner/${truckId}/favorites`)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const postDinerRating = (truckId, rating) => (dispatch) => {
+  dispatch({ type: POST_RATING_LOADING });
+  axiosWithAuth()
+    .post(`/diner/${truckId}/ratings`, {
+      truckId: truckId,
+      rating: rating,
+    })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const putDinerRating = (truckId, rating) => (dispatch) => {
+  dispatch({ type: PUT_RATING_LOADING });
+  axiosWithAuth()
+    .post(`/diner/${truckId}/ratings`, { truckId, rating })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const deleteDinerRating = (truckId) => (dispatch) => {
+  dispatch({ type: DELETE_RATING_LOADING });
+  axiosWithAuth()
+    .post(`/diner/${truckId}/ratings`)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const getDinerCuisineTypes = () => (dispatch) => {
+  dispatch({ type: GET_CUISINE_TYPE_LOADING });
+  axiosWithAuth()
+    .get('/cuisines')
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

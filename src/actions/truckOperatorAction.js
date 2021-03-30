@@ -1,37 +1,36 @@
 import axiosWithAuth from '../utils/axiosWithAuth';
 
-// fetching truck operator
+// GET truck operator
 export const GET_OPERATOR_LOADING = 'GET_OPERATOR_LOADING';
 export const GET_OPERATOR_SUCCESS = 'GET_OPERATOR_SUCCESS';
 export const GET_OPERATOR_FAILURE = 'GET_OPERATOR_FAILURE';
 
-
-// post operator new truck
+// POST operator new truck
 export const POST_OPERATOR_TRUCK_LOADING = 'POST_OPERATOR_TRUCK_LOADING';
 export const POST_OPERATOR_TRUCK_SUCCESS = 'POST_OPERATOR_TRUCK_SUCCESS';
 export const POST_OPERATOR_TRUCK_FAILURE = 'POST_OPERATOR_TRUCK_FAILURE';
 
-// delete operator truck
+// DELETE operator truck
 export const DELETE_OPERATOR_TRUCK_LOADING = 'DELETE_OPERATOR_TRUCK_LOADING';
 export const DELETE_OPERATOR_TRUCK_SUCCESS = 'DELETE_OPERATOR_TRUCK_SUCCESS';
 export const DELETE_OPERATOR_TRUCK_FAILURE = 'DELETE_OPERATOR_TRUCK_FAILURE';
 
-// post menu new item
+// POST menu new item
 export const POST_MENU_ITEM_LOADING = 'POST_MENU_ITEM_LOADING';
 export const POST_MENU_ITEM_SUCCESS = 'POST_MENU_ITEM_SUCCESS';
 export const POST_MENU_ITEM_FAILURE = 'POST_MENU_ITEM_FAILURE';
 
-// put menu item
+// PUT menu item
 export const PUT_MENU_ITEM_LOADING = 'PUT_MENU_ITEM_LOADING';
 export const PUT_MENU_ITEM_SUCCESS = 'PUT_MENU_ITEM_SUCCESS';
 export const PUT_MENU_ITEM_FAILURE = 'PUT_MENU_ITEM_FAILURE';
 
-// delete menu item
+// DELETE menu item
 export const DELETE_MENU_ITEM_LOADING = 'DELETE_MENU_ITEM_LOADING';
 export const DELETE_MENU_ITEM_SUCCESS = 'DELETE_MENU_ITEM_SUCCESS';
 export const DELETE_MENU_ITEM_FAILURE = 'DELETE_MENU_ITEM_FAILURE';
 
-// put truck info
+// PUT truck info
 export const PUT_TRUCK_INFO_LOADING = 'PUT_TRUCK_INFO_LOADING';
 export const PUT_TRUCK_INFO_SUCCESS = 'PUT_TRUCK_INFO_SUCCESS';
 export const PUT_TRUCK_INFO_FAILURE = 'PUT_TRUCK_INFO_FAILURE';
@@ -93,7 +92,7 @@ export const deleteOperatorTruck = (operatorId, truckId) => (dispatch) => {
 };
 
 export const postMenuItem = (operatorId, truckId) => (dispatch) => {
-  dispatch({ type: POST_MENU_ITEM_LOADING});
+  dispatch({ type: POST_MENU_ITEM_LOADING });
   axiosWithAuth()
     .put(`/operator/${operatorId}/${truckId}`)
     .then((res) => {
@@ -105,7 +104,7 @@ export const postMenuItem = (operatorId, truckId) => (dispatch) => {
 };
 
 export const putMenuItem = (operatorId, truckId, itemId) => (dispatch) => {
-  dispatch({ type: POST_MENU_ITEM_LOADING});
+  dispatch({ type: POST_MENU_ITEM_LOADING });
   axiosWithAuth()
     .put(`/operator/${operatorId}/${truckId}/${itemId}`)
     .then((res) => {
@@ -117,7 +116,7 @@ export const putMenuItem = (operatorId, truckId, itemId) => (dispatch) => {
 };
 
 export const deleteMenuItem = (operatorId, truckId, itemId) => (dispatch) => {
-  dispatch({ type: DELETE_MENU_ITEM_LOADING});
+  dispatch({ type: DELETE_MENU_ITEM_LOADING });
   axiosWithAuth()
     .delete(`/operator/${operatorId}/${truckId}/${itemId}`)
     .then((res) => {
@@ -127,4 +126,3 @@ export const deleteMenuItem = (operatorId, truckId, itemId) => (dispatch) => {
       console.log(err);
     });
 };
-
