@@ -3,8 +3,11 @@ import axios from 'axios';
 const axiosWithAuth = () => {
   const token = window.localStorage.getItem('token');
 
+  const nodeAPI = 'foodtruktrackr';
+  // const javaAPI = '';
+
   return axios.create({
-    baseURL: 'https://foodtruckr.heroku.com/api',
+    baseURL: `https://${nodeAPI}.herokuapp.com/`,
     headers: {
       authorization: token,
     },
