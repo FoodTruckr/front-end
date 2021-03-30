@@ -1,7 +1,10 @@
 .App {
   background: #fff url('https://kanye2049.com/img/bg.png') 0 0 repeat;
   height: 100vh;
-  NAVBAR header {
+  font-family: "Microsoft MS Sans Serif"; 
+  
+  // NAVBAR 
+  header {
     input {
       color: blue;
     }
@@ -9,5 +12,6 @@
 
   .landing-page {
     margin-top: 45px;
+
   }
 }
