@@ -1,3 +1,5 @@
+import axiosWithAuth from '../utils/axiosWithAuth';
+
 // fetching truck operator
 export const GET_OPERATOR_LOADING = 'GET_OPERATOR_LOADING';
 export const GET_OPERATOR_SUCCESS = 'GET_OPERATOR_SUCCESS';
@@ -33,6 +35,11 @@ export const PUT_TRUCK_INFO_LOADING = 'PUT_TRUCK_INFO_LOADING';
 export const PUT_TRUCK_INFO_SUCCESS = 'PUT_TRUCK_INFO_SUCCESS';
 export const PUT_TRUCK_INFO_FAILURE = 'PUT_TRUCK_INFO_FAILURE';
 
+// GET cuisineTypes
+export const GET_CUISINE_TYPE_LOADING = 'GET_CUISINE_TYPES_LOADING';
+export const GET_CUISINE_TYPE_SUCCESS = 'GET_CUISINE_TYPES_SUCCESS';
+export const GET_CUISINE_TYPE_FAILURE = 'GET_CUISINE_TYPES_FAILURE';
+
 // POST new cuisine type
 export const POST_CUISINE_TYPE_LOADING = 'POST_CUISINE_TYPE_LOADING';
 export const POST_CUISINE_TYPE_SUCCESS = 'POST_CUISINE_TYPE_SUCCESS';
@@ -47,3 +54,15 @@ export const PUT_CUISINE_TYPE_FAILURE = 'POST_CUISINE_TYPE_FAILURE';
 export const DELETE_CUISINE_TYPE_LOADING = 'DELETE_CUISINE_TYPE_LOADING';
 export const DELETE_CUISINE_TYPE_SUCCESS = 'DELETE_CUISINE_TYPE_SUCCESS';
 export const DELETE_CUISINE_TYPE_FAILURE = 'DELETE_CUISINE_TYPE_FAILURE';
+
+export const getOperator = (operatorId) => (dispatch) => {
+  dispatch({ type: GET_OPERATOR_LOADING });
+  axiosWithAuth()
+    .get(`/operator/${operatorId}`)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

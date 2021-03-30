@@ -29,6 +29,9 @@ import {
   DELETE_CUISINE_TYPE_LOADING,
   DELETE_CUISINE_TYPE_SUCCESS,
   DELETE_CUISINE_TYPE_FAILURE,
+  GET_CUISINE_TYPE_LOADING,
+  GET_CUISINE_TYPE_SUCCESS,
+  GET_CUISINE_TYPE_FAILURE,
 } from './../actions/truckOperatorAction';
 
 const initialState = {
@@ -63,12 +66,17 @@ const initialState = {
       },
     ],
   },
+  cuisineTypeArray: [],
 };
 
 const truckOperatorReducer = (state = initialState, action) => {
   switch (action.type) {
     default:
       return state;
+    case GET_OPERATOR_LOADING:
+      return {
+        ...state,
+      };
   }
 };
 

@@ -1,3 +1,5 @@
+import axiosWithAuth from '../utils/axiosWithAuth';
+
 // fetching diner info
 export const GET_DINER_SUCCESS = 'GET_DINER_SUCCESS';
 export const GET_DINER_FAILURE = 'GET_DINER_FAILURE';
@@ -42,3 +44,27 @@ export const DELETE_RATING_FAILURE = 'DELETE_RATING_FAILURE';
 export const GET_CUISINE_TYPE_LOADING = 'GET_CUISINE_TYPES_LOADING';
 export const GET_CUISINE_TYPE_SUCCESS = 'GET_CUISINE_TYPES_SUCCESS';
 export const GET_CUISINE_TYPE_FAILURE = 'GET_CUISINE_TYPES_FAILURE';
+
+export const getDiner = (userId) => (dispatch) => {
+  dispatch({ type: GET_DINER_LOADING });
+  axiosWithAuth()
+    .get(`/diner/${userId}`)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const getSingleTruckDiner = (truckId) => (dispatch) => {
+  dispatch({ type: GET_DINER_SINGLE_TRUCK_LOADING });
+  axiosWithAuth()
+    .get(`/trucks/${truckId}`)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
