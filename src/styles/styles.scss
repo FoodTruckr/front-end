@@ -2,9 +2,13 @@ body {
   background: #008080;
 }
 
+html,body { 
+  height:100%; 
+}
+
 .App {
   font-family: "Microsoft MS Sans Serif";
-
+  height:100%;
   // NAVBAR
   header {
     input {

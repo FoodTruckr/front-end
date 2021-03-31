@@ -20,25 +20,25 @@ const Landing = () => {
           alignItems: 'center',
           flexDirection: 'column',
         }}>
+        <Panel style={{padding: '0 2% 0 2%', marginBottom: '1%'}}>
         <h1
           style={{
             fontSize: '6.5rem',
-            color: 'white',
-            textShadow:
-              '10px 10px 10px black, 0 0 10em #008080, 0 0 0.2em #008080',
+            color: 'black',
           }}>
           Food Truckr
         </h1>
+        </Panel>
+        <Panel style={{padding: '0 1% 0 1%'}}>
         <p
           style={{
             fontSize: '1.8rem',
-            color: 'white',
-            textShadow:
-              '10px 10px 10px black, 0 0 10em #008080, 0 0 0.2em #008080',
+            color: 'black',
           }}>
           On the go? So are they! Use Food Truckr to find your favorite food
           trucks fast!
         </p>
+        </Panel>
       </div>
       <div
         style={{

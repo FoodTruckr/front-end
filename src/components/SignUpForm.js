@@ -6,6 +6,7 @@ import {
   Window,
   WindowContent,
   Button,
+  Panel
 } from 'react95';
 
 const initialValues = {
@@ -23,9 +24,9 @@ const SignUpForm = () => {
   return (
     <div style={{ width: '100%', marginTop: '10%' }}>
       <div style={{ textAlign: 'center', marginBottom: '2%', width: '100%' }}>
-        <Button type={{ textAlign: 'center' }} active>
+        <Panel type={{ textAlign: 'center'}}>
           Sign up Below!
-        </Button>
+        </Panel>
       </div>
       <div style={{ width: '200px', margin: '0 auto' }}>
         <div style={{ display: 'flex' }}>
