@@ -1,5 +1,12 @@
 import useForm from './../utils/useForm';
-import { Fieldset, Radio, TextField, Window, WindowContent, Button } from 'react95';
+import {
+  Fieldset,
+  Radio,
+  TextField,
+  Window,
+  WindowContent,
+  Button,
+} from 'react95';
 
 const initialValues = {
   username: '',
@@ -14,58 +21,62 @@ const SignUpForm = () => {
   );
 
   return (
-    <div style={{width: '100%', marginTop: '10%',}}>
-      <div style={{textAlign: 'center', marginBottom: '2%', width: '100%'}}>
-      <Button type={{textAlign: 'center'}} active>Sign up Below!</Button>
+    <div style={{ width: '100%', marginTop: '10%' }}>
+      <div style={{ textAlign: 'center', marginBottom: '2%', width: '100%' }}>
+        <Button type={{ textAlign: 'center' }} active>
+          Sign up Below!
+        </Button>
       </div>
-    <div style={{ width: '200px', margin: '0 auto' }}>
-      <div style={{ display: 'flex' }}>
+      <div style={{ width: '200px', margin: '0 auto' }}>
+        <div style={{ display: 'flex' }}>
+          <TextField
+            value={username}
+            placeholder="Username"
+            onChange={handleChange}
+            name="username"
+            type="text"
+            fullWidth
+          />
+        </div>
         <TextField
-          value={username}
-          placeholder="Username"
+          placeholder="E-mail"
           onChange={handleChange}
-          name="username"
+          name="email"
           type="text"
-          fullWidth
+          value={email}
         />
+        <TextField
+          placeholder="Password"
+          onChange={handleChange}
+          name="password"
+          type="password"
+          value={password}
+        />
+        <Window>
+          <WindowContent>
+            <Fieldset label="Role">
+              <Radio
+                checked={role === 'diner'}
+                onChange={handleChange}
+                value="diner"
+                label="🍔 Diner"
+                name="role"
+              />
+              <br />
+              <Radio
+                checked={role === 'operator'}
+                onChange={handleChange}
+                value="operator"
+                label="👷🏽‍♂️ Operator"
+                name="role"
+              />
+              <Button type="submit" primary>
+                Submit
+              </Button>
+            </Fieldset>
+          </WindowContent>
+        </Window>
       </div>
-      <TextField
-        placeholder="E-mail"
-        onChange={handleChange}
-        name="email"
-        type="text"
-        value={email}
-      />
-      <TextField
-        placeholder="Password"
-        onChange={handleChange}
-        name="password"
-        type="password"
-        value={password}
-      />
-      <Window>
-        <WindowContent>
-          <Fieldset label="Role">
-            <Radio
-              checked={role === 'user'}
-              onChange={handleChange}
-              value="user"
-              label="🍔 User"
-              name="role"
-            />
-            <br />
-            <Radio
-              checked={role === 'operator'}
-              onChange={handleChange}
-              value="operator"
-              label="👷🏽‍♂️ Operator"
-              name="role"
-            />
-            <Button type="submit" primary>Submit</Button>
-          </Fieldset>
-        </WindowContent>
-      </Window>
-    </div>
     </div>
   );
 };
