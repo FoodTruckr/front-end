@@ -13,15 +13,13 @@ export default function TruckListItem({
         width: "30%",
       }}
     >
-      <div style={{ flexDirection: "column" }}>
-        <p>{truckName}</p>
+      <p>{truckName}</p>
 
-        <img src={imageOfTruck} alt="food trucks" />
+      <img src={imageOfTruck} alt="food trucks" />
 
-        <p>{customerRatingAvg}</p>
+      <p>{customerRatingAvg}</p>
 
-        <p>{cuisineTypes}</p>
-      </div>
+      <p>{cuisineTypes}</p>
     </Panel>
   );
 }
