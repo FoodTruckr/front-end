@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './styles/globalStyles';
 
 // pick a theme of your choice
+
 import original from 'react95/dist/themes/original';
 import NavBar from './components/NavBar';
 import Landing from './components/Landing';
@@ -10,6 +11,7 @@ import { Route } from 'react-router-dom';
 import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
 import TruckListItem from './components/TruckListItem';
+
 // original Windows95 font (optionally)
 
 const App = () => (
