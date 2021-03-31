@@ -1,4 +1,4 @@
-import { Panel } from "react95";
+import { Panel } from 'react95';
 
 export default function TruckListItem({
   truckName,
@@ -9,10 +9,9 @@ export default function TruckListItem({
   return (
     <Panel
       style={{
-        display: "flex",
-        width: "30%",
-      }}
-    >
+        display: 'flex',
+        width: '30%',
+      }}>
       <p>{truckName}</p>
 
       <img src={imageOfTruck} alt="food trucks" />

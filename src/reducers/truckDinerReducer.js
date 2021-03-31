@@ -26,55 +26,71 @@ import {
   GET_CUISINE_TYPE_LOADING,
   GET_CUISINE_TYPE_SUCCESS,
   GET_CUISINE_TYPE_FAILURE,
-} from "../actions/truckDinerAction";
+} from '../actions/truckDinerAction';
 
 const initialState = {
   diner: {
-    userId: "",
-    username: "",
+    userId: '',
+    username: '',
     favoriteTrucks: [
       {
-        truckId: "",
-        truckName: "",
+        truckId: '',
+        truckName: '',
       },
     ],
   },
 
   singleTruck: {
-    truckId: "",
-    truckName: "",
-    currentLocation: "",
-    imageOfTruck: "",
-    cuisineTypes: [],
-    customerRatingAvg: "",
-    customerRatings: [{ username: "", starRatings: "" }],
-    arrivalTime: "",
-    arrivalDate: "",
-    departureTime: "",
-    departureDate: "",
+    truckId: '',
+    truckName: '',
+    currentLocation: '',
+    imageOfTruck: '',
+    cuisineTypes: [
+      {
+        cuisineTypeName: '',
+        cuisineTypeId: '',
+      },
+    ],
+    customerRatingAvg: '',
+    customerRatings: [{ username: '', starRatings: '' }],
+    arrivalTime: '',
+    arrivalDate: '',
+    departureTime: '',
+    departureDate: '',
     menu: [
       {
-        itemName: "",
-        itemDescription: "",
-        itemPrice: "",
-        itemPhotoUrl: "",
+        itemName: '',
+        itemDescription: '',
+        itemPrice: '',
+        itemPhotoUrl: '',
       },
     ],
   },
 
   trucks: [
     {
-      truckId: "",
-      truckName: "",
-      imageOfTruck: "",
-      customerRatingAvg: "",
-      cuisineTypes: [],
+      truckId: '',
+      truckName: '',
+      imageOfTruck: '',
+      customerRatingAvg: '',
+      cuisineTypes: [
+        {
+          cuisineTypeId: '',
+          cuisineTypeName: '',
+        },
+      ],
     },
   ],
+  isLoading: false,
+  errors: '',
 };
 
 const truckDinerReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_DINER_LOADING:
+      return {
+        ...state,
+      };
     case GET_DINER_SUCCESS:
       return {
         ...state,
@@ -83,7 +99,7 @@ const truckDinerReducer = (state = initialState, action) => {
       return {
         ...state,
       };
-    case GET_DINER_LOADING:
+    case GET_DINER_SINGLE_TRUCK_LOADING:
       return {
         ...state,
       };
@@ -95,19 +111,23 @@ const truckDinerReducer = (state = initialState, action) => {
       return {
         ...state,
       };
-    case GET_DINER_SINGLE_TRUCK_LOADING:
+    case GET_DINER_ALL_TRUCK_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
     case GET_DINER_ALL_TRUCK_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        trucks: action.payload,
       };
     case GET_DINER_ALL_TRUCK_FAILURE:
       return {
         ...state,
       };
-    case GET_DINER_ALL_TRUCK_LOADING:
+    case POST_FAVORITE_LOADING:
       return {
         ...state,
       };
@@ -119,7 +139,7 @@ const truckDinerReducer = (state = initialState, action) => {
       return {
         ...state,
       };
-    case POST_FAVORITE_LOADING:
+    case DELETE_FAVORITE_LOADING:
       return {
         ...state,
       };
@@ -131,7 +151,7 @@ const truckDinerReducer = (state = initialState, action) => {
       return {
         ...state,
       };
-    case DELETE_FAVORITE_LOADING:
+    case POST_RATING_LOADING:
       return {
         ...state,
       };
@@ -140,10 +160,6 @@ const truckDinerReducer = (state = initialState, action) => {
         ...state,
       };
     case POST_RATING_FAILURE:
-      return {
-        ...state,
-      };
-    case POST_RATING_LOADING:
       return {
         ...state,
       };

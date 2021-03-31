@@ -1,19 +1,19 @@
-import useForm from './../utils/useForm'
-import { TextField, Button } from 'react95'
+import useForm from './../utils/useForm';
+import { TextField, Button } from 'react95';
 
 const initialValues = {
   username: '',
   password: '',
-}
+};
 
 const LoginForm = () => {
-  const [{ username, password }, handleChange] = useForm(initialValues)
+  const [{ username, password }, handleChange] = useForm(initialValues);
 
   return (
-    <div style={{ width: '100%', marginTop: '10%' }}>
+    <form style={{ width: '100%', marginTop: '10%' }}>
       <div style={{ textAlign: 'center', marginBottom: '2%', width: '100%' }}>
         <Button type={{ textAlign: 'center' }} active>
-          Sign in Below!
+          Log In!
         </Button>
       </div>
       <div style={{ width: '200px', margin: '0 auto' }}>
@@ -37,13 +37,12 @@ const LoginForm = () => {
         <Button
           style={{ marginLeft: '32%', marginTop: '5%' }}
           type="submit"
-          primary
-        >
+          primary>
           Submit
         </Button>
       </div>
-    </div>
-  )
-}
+    </form>
+  );
+};
 
-export default LoginForm
+export default LoginForm;

@@ -32,6 +32,9 @@ import {
   GET_CUISINE_TYPE_LOADING,
   GET_CUISINE_TYPE_SUCCESS,
   GET_CUISINE_TYPE_FAILURE,
+  GET_MENU_ITEM_LOADING,
+  GET_MENU_ITEM_SUCCESS,
+  GET_MENU_ITEM_FAILURE,
 } from './../actions/truckOperatorAction';
 
 const initialState = {
@@ -104,6 +107,18 @@ const truckOperatorReducer = (state = initialState, action) => {
         ...state,
       };
     case DELETE_OPERATOR_TRUCK_FAILURE:
+      return {
+        ...state,
+      };
+    case GET_MENU_ITEM_LOADING:
+      return {
+        ...state,
+      };
+    case GET_MENU_ITEM_SUCCESS:
+      return {
+        ...state,
+      };
+    case GET_MENU_ITEM_FAILURE:
       return {
         ...state,
       };

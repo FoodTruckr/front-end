@@ -6,16 +6,16 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   USER_LOGOUT,
-} from "../actions/userAction";
+} from '../actions/userAction';
 
 const initialState = {
-  userId: "",
-  username: "",
-  role: "",
-  email: "",
+  userId: '',
+  username: '',
+  role: '',
+  email: '',
   isLoading: false,
-  token: window.localStorage.getItem("token") || false,
-  error: "",
+  token: window.localStorage.getItem('token') || false,
+  error: '',
 };
 
 const userReducer = (state = initialState, action) => {
@@ -24,7 +24,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        error: "",
+        error: '',
       };
     case SIGNUP_SUCCESS:
       return {
@@ -36,13 +36,13 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        error: action.payload.error,
+        error: action.payload,
       };
     case LOGIN_LOADING:
       return {
         ...state,
         isLoading: true,
-        error: "",
+        error: '',
       };
     case LOGIN_SUCCESS:
       return {
@@ -63,9 +63,12 @@ const userReducer = (state = initialState, action) => {
     case USER_LOGOUT:
       return {
         ...state,
-        token: window.localStorage.removeItem("token") || false,
+        userId: '',
+        username: '',
+        role: '',
+        email: '',
+        token: window.localStorage.removeItem('token') || false,
       };
-
     default:
       return state;
   }
