@@ -10,7 +10,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './styles/styles.css';
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
-console.log(store.getState());
 ReactDOM.render(
   <React.StrictMode>
     <Router>

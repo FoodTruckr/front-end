@@ -50,12 +50,13 @@ const TruckListItem = (props) => {
             padding: '0.1rem 0.25rem',
             width: '100%',
           }}>
-          <h3>CuisineTypes</h3>
-          {cuisineTypes.map((cuisineTypes) => (
-            <p key={cuisineTypes.cuisineTypeId}>
-              {cuisineTypes.cuisineTypeName}
-            </p>
-          ))}
+          {cuisineTypes && <h3>CuisineTypes</h3>}
+          {cuisineTypes &&
+            cuisineTypes.map((cuisineTypes) => (
+              <p key={cuisineTypes.cuisineTypeId}>
+                {cuisineTypes.cuisineTypeName}
+              </p>
+            ))}
         </Panel>
       </Panel>
     </div>
