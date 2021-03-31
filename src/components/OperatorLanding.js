@@ -1,5 +1,4 @@
 import { Panel } from 'react95';
-import { Hourglass } from 'react95';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import TruckListItem from './TruckListItem';
@@ -9,7 +8,7 @@ import { useParams } from 'react-router';
 const OperatorLanding = (props) => {
   const { getOperator } = props;
   const { id } = useParams();
-  console.log(id);
+  console.log('operator', props.operator.trucksOwned);
 
   useEffect(() => {
     getOperator(id);
@@ -17,7 +16,7 @@ const OperatorLanding = (props) => {
 
   return (
     <Panel>
-      {props.isLoading && <h3>{Hourglass}</h3>}
+      {props.isLoading && <h3>Loading...</h3>}
       {props.error && <p>{props.error}</p>}
       {props.operator.trucksOwned.map((truck) => (
         <TruckListItem key={truck.truckId} truck={truck} />

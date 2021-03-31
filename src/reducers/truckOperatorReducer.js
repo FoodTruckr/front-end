@@ -70,6 +70,8 @@ const initialState = {
     ],
   },
   cuisineTypeArray: [],
+  isLoading: false,
+  errors: '',
 };
 
 const truckOperatorReducer = (state = initialState, action) => {
@@ -77,10 +79,17 @@ const truckOperatorReducer = (state = initialState, action) => {
     case GET_OPERATOR_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
     case GET_OPERATOR_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        operator: {
+          ...state.operator,
+          trucksOwned: action.payload,
+        },
       };
     case GET_OPERATOR_FAILURE:
       return {
