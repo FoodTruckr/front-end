@@ -3,11 +3,10 @@ body {
 }
 
 .App {
-  background: #008080;
-  height: 50vh;
+  font-family: "Microsoft MS Sans Serif";
 }
 
-.App NAVBAR header input {
+.App header input {
   color: blue;
 }
 
