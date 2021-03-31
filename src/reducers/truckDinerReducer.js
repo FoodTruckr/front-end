@@ -126,6 +126,8 @@ const truckDinerReducer = (state = initialState, action) => {
     case GET_DINER_ALL_TRUCK_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        error: action.payload,
       };
     case POST_FAVORITE_LOADING:
       return {

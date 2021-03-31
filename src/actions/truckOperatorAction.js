@@ -70,13 +70,14 @@ export const DELETE_CUISINE_TYPE_FAILURE = 'DELETE_CUISINE_TYPE_FAILURE';
 
 export const getOperator = (operatorId) => (dispatch) => {
   dispatch({ type: GET_OPERATOR_LOADING });
+  console.log('operatorID', operatorId);
   axiosWithAuth()
     .get(`/operator/${operatorId}`)
     .then((res) => {
       console.log(res);
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err.response.data.message);
     });
 };
 

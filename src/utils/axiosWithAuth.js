@@ -7,7 +7,7 @@ const axiosWithAuth = () => {
   // const javaAPI = '';
 
   return axios.create({
-    baseURL: `https://${nodeAPI}.herokuapp.com/`,
+    baseURL: `https://${nodeAPI}.herokuapp.com/api`,
     headers: {
       authorization: token,
     },

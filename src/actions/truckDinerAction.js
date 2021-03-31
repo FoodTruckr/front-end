@@ -84,12 +84,13 @@ export const getTrucksDiner = () => (dispatch) => {
   axiosWithAuth()
     .get('/trucks')
     .then((res) => {
-      console.log(res);
-      dispatch({ type: GET_DINER_ALL_TRUCK_SUCCESS, payload: res });
+      dispatch({ type: GET_DINER_ALL_TRUCK_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
-      dispatch({ type: GET_DINER_ALL_TRUCK_FAILURE, payload: err });
+      dispatch({
+        type: GET_DINER_ALL_TRUCK_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 

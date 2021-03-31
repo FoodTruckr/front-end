@@ -1,16 +1,19 @@
-import { Panel } from "react95";
-import { Hourglass } from "react95";
-import { connect } from "react-redux";
-import { useEffect } from "react";
-import TruckListItem from "./TruckListItem";
-import { getOperator } from "../actions/truckOperatorAction";
+import { Panel } from 'react95';
+import { Hourglass } from 'react95';
+import { connect } from 'react-redux';
+import { useEffect } from 'react';
+import TruckListItem from './TruckListItem';
+import { getOperator } from '../actions/truckOperatorAction';
+import { useParams } from 'react-router';
 
 const OperatorLanding = (props) => {
   const { getOperator } = props;
+  const { id } = useParams();
+  console.log(id);
 
   useEffect(() => {
-    getOperator();
-  }, []);
+    getOperator(id);
+  }, [id, getOperator]);
 
   return (
     <Panel>
