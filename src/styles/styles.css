@@ -1,9 +1,12 @@
-.App {
+body {
   background: #008080;
-  height: 100vh;
 }
 
-.App NAVBAR header input {
+.App {
+  font-family: "Microsoft MS Sans Serif";
+}
+
+.App header input {
   color: blue;
 }
 

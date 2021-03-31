@@ -7,7 +7,6 @@ import original from "react95/dist/themes/original";
 import NavBar from "./components/NavBar";
 import Landing from "./components/Landing";
 import { Route } from "react-router-dom";
-import { Hourglass } from "react95";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignUpForm";
 import TruckListItem from "./components/TruckListItem";
