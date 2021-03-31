@@ -1,6 +1,10 @@
+body {
+  background: #008080;
+}
+
 .App {
   background: #008080;
-  height: 100vh;
+  height: 50vh;
 }
 
 .App NAVBAR header input {

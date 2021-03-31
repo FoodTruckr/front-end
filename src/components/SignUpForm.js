@@ -1,5 +1,5 @@
 import useForm from './../utils/useForm';
-import { Fieldset, Radio, TextField, Window, WindowContent } from 'react95';
+import { Fieldset, Radio, TextField, Window, WindowContent, Button } from 'react95';
 
 const initialValues = {
   username: '',
@@ -14,7 +14,11 @@ const SignUpForm = () => {
   );
 
   return (
-    <div style={{ width: '200px' }}>
+    <div style={{width: '100%', marginTop: '10%',}}>
+      <div style={{textAlign: 'center', marginBottom: '2%', width: '100%'}}>
+      <Button type={{textAlign: 'center'}} active>Sign up Below!</Button>
+      </div>
+    <div style={{ width: '200px', margin: '0 auto' }}>
       <div style={{ display: 'flex' }}>
         <TextField
           value={username}
@@ -57,9 +61,11 @@ const SignUpForm = () => {
               label="👷🏽‍♂️ Operator"
               name="role"
             />
+            <Button type="submit" primary>Submit</Button>
           </Fieldset>
         </WindowContent>
       </Window>
+    </div>
     </div>
   );
 };
