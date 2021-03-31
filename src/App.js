@@ -1,16 +1,17 @@
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import { GlobalStyles } from './styles/globalStyles';
+import React from "react";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "./styles/globalStyles";
 
 // pick a theme of your choice
 
-import original from 'react95/dist/themes/original';
-import NavBar from './components/NavBar';
-import Landing from './components/Landing';
-import { Route } from 'react-router-dom';
-import LoginForm from './components/LoginForm';
-import SignUpForm from './components/SignUpForm';
-import TruckListItem from './components/TruckListItem';
+import original from "react95/dist/themes/original";
+import NavBar from "./components/NavBar";
+import Landing from "./components/Landing";
+import { Route } from "react-router-dom";
+import LoginForm from "./components/LoginForm";
+import SignUpForm from "./components/SignUpForm";
+import DinerLanding from "./components/DinerLanding";
+import OperatorLanding from "./components/OperatorLanding";
 
 // original Windows95 font (optionally)
 
@@ -28,8 +29,11 @@ const App = () => (
       <Route path="/signup">
         <SignUpForm />
       </Route>
-      <Route path="/trucklist">
-        <TruckListItem />
+      <Route path="/diner">
+        <DinerLanding />
+      </Route>
+      <Route path="/operator">
+        <OperatorLanding />
       </Route>
     </ThemeProvider>
   </div>

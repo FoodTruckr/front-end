@@ -26,13 +26,14 @@ export default function TruckListItem({
       <p>{truckName}</p>
 
       <Panel style={{ padding: "0.5rem" }}>{truckName}TRUCKNAME</Panel>
-
-      <img
-        src={imageOfTruck}
-        alt="food trucks"
-        variant="inside"
-        style={{ margin: "1rem", padding: "1rem" }}
+      {imageOfTruck && (
+        <img
+          src={imageOfTruck}
+          alt="food trucks"
+          variant="inside"
+          style={{ margin: "1rem", padding: "1rem" }}
         />
+      )}
 
       <Panel
         variant="well"
