@@ -10,10 +10,11 @@ import {
 } from 'react95';
 import { connect } from 'react-redux';
 import useForm from '../utils/useForm';
+import logo from './../assets/logo.png';
 
 const NavBar = (props) => {
   const [open, setOpen] = React.useState(false);
-  const [{ searchText }, handleChanges] = useForm('');
+  const [{ searchText }, handleChanges] = useForm('dasdfasji');
 
   return (
     <AppBar style={{ zIndex: '1' }}>
@@ -23,6 +24,11 @@ const NavBar = (props) => {
             onClick={() => setOpen(!open)}
             active={open}
             style={{ fontWeight: 'bold' }}>
+            <img
+              src={logo}
+              alt="react95 logo"
+              style={{ height: '20px', marginRight: 4 }}
+            />
             🛻 Start
           </Button>
           {open && (

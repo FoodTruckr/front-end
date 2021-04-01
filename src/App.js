@@ -12,6 +12,7 @@ import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
 import DinerLanding from './components/DinerLanding';
 import OperatorLanding from './components/OperatorLanding';
+import SingleTruck from './components/SingleTruck';
 import { PrivateRoute } from './utils/PrivateRoute';
 
 // original Windows95 font (optionally)
@@ -30,8 +31,10 @@ const App = () => (
       <Route path="/signup">
         <SignUpForm />
       </Route>
-      <PrivateRoute path="/diner" component={DinerLanding} />
-      <PrivateRoute path="/operator" component={OperatorLanding} />
+      <PrivateRoute exact path="/diner" component={DinerLanding} />
+      <PrivateRoute exact path="/operator" component={OperatorLanding} />
+      <PrivateRoute exact path="/diner/:truckId" component={SingleTruck} />
+      <PrivateRoute path="/operator/:truckId" component={SingleTruck} />
     </ThemeProvider>
   </div>
 );
