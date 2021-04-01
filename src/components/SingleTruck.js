@@ -16,6 +16,7 @@ const SingleTruck = (props) => {
     arrivalDate,
     departureTime,
     departureDate,
+
     customerRatings,
   } = truck;
   const { truckId } = useParams();

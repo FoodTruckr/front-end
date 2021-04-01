@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const useForm = (initialValues) => {
   const [values, setValues] = useState(initialValues);
@@ -10,7 +10,16 @@ const useForm = (initialValues) => {
     });
   };
 
-  return [values, handleChanges];
+  const reset = () => {
+    setValues({
+      initialValues,
+    });
+  };
+  // const handleNestedChanges = (e) => {
+  //   e.preventDefault();
+  // }
+
+  return [values, handleChanges, reset];
 };
 
 export default useForm;
