@@ -35,6 +35,9 @@ import {
   GET_MENU_ITEM_LOADING,
   GET_MENU_ITEM_SUCCESS,
   GET_MENU_ITEM_FAILURE,
+  GET_OPERATOR_SINGLE_TRUCK_LOADING,
+  GET_OPERATOR_SINGLE_TRUCK_SUCCESS,
+  GET_OPERATOR_SINGLE_TRUCK_FAILURE,
 } from './../actions/truckOperatorAction';
 
 const initialState = {
@@ -69,13 +72,14 @@ const initialState = {
       },
     ],
   },
-  cuisineTypeArray: [],
+  allCuisineTypes: [],
   isLoading: false,
   errors: '',
 };
 
 const truckOperatorReducer = (state = initialState, action) => {
   switch (action.type) {
+    //! GET OPERATOR CASES
     case GET_OPERATOR_LOADING:
       return {
         ...state,
@@ -94,138 +98,243 @@ const truckOperatorReducer = (state = initialState, action) => {
     case GET_OPERATOR_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        errors: action.payload,
       };
+    //! GET SINGLE OPERATOR TRUCK CASES
+    case GET_OPERATOR_SINGLE_TRUCK_LOADING:
+      return {
+        ...state,
+        isLoading: true,
+        errors: '',
+      };
+    case GET_OPERATOR_SINGLE_TRUCK_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        singleTruck: action.payload,
+      };
+    case GET_OPERATOR_SINGLE_TRUCK_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    //! POST OPERATOR TRUCK CASES
     case POST_OPERATOR_TRUCK_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
     case POST_OPERATOR_TRUCK_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        operator: {
+          ...state.operator,
+          trucksOwned: action.payload,
+        },
       };
     case POST_OPERATOR_TRUCK_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        errors: action.payload,
       };
-    case DELETE_OPERATOR_TRUCK_LOADING:
-      return {
-        ...state,
-      };
-    case DELETE_OPERATOR_TRUCK_SUCCESS:
-      return {
-        ...state,
-      };
-    case DELETE_OPERATOR_TRUCK_FAILURE:
-      return {
-        ...state,
-      };
-    case GET_MENU_ITEM_LOADING:
-      return {
-        ...state,
-      };
-    case GET_MENU_ITEM_SUCCESS:
-      return {
-        ...state,
-      };
-    case GET_MENU_ITEM_FAILURE:
-      return {
-        ...state,
-      };
-    case POST_MENU_ITEM_LOADING:
-      return {
-        ...state,
-      };
-    case POST_MENU_ITEM_SUCCESS:
-      return {
-        ...state,
-      };
-    case POST_MENU_ITEM_FAILURE:
-      return {
-        ...state,
-      };
-    case PUT_MENU_ITEM_LOADING:
-      return {
-        ...state,
-      };
-    case PUT_MENU_ITEM_SUCCESS:
-      return {
-        ...state,
-      };
-    case PUT_MENU_ITEM_FAILURE:
-      return {
-        ...state,
-      };
-    case DELETE_MENU_ITEM_LOADING:
-      return {
-        ...state,
-      };
-    case DELETE_MENU_ITEM_SUCCESS:
-      return {
-        ...state,
-      };
-    case DELETE_MENU_ITEM_FAILURE:
-      return {
-        ...state,
-      };
+    //! PUT TRUCK CASES
     case PUT_TRUCK_INFO_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
     case PUT_TRUCK_INFO_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        //TODO MISSING SUCCESS CASE
       };
     case PUT_TRUCK_INFO_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        errors: action.payload,
       };
+    //! DELETE OPERATOR TRUCK CASES
+    case DELETE_OPERATOR_TRUCK_LOADING:
+      return {
+        ...state,
+        isLoading: true,
+        errors: '',
+      };
+    case DELETE_OPERATOR_TRUCK_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        operator: {
+          ...state.operator,
+          trucksOwned: action.payload,
+        },
+      };
+    case DELETE_OPERATOR_TRUCK_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload,
+      };
+    // //! GET MENU ITEM CASES TALK TO JAY ABOUT THIS
+    // case GET_MENU_ITEM_LOADING:
+    //   return {
+    //     ...state,
+    //     isLoading: true,
+    //     errors: '',
+    //   };
+    // case GET_MENU_ITEM_SUCCESS:
+    //   return {
+    //     ...state,
+    //     isLoading: false,
+
+    //   };
+    // case GET_MENU_ITEM_FAILURE:
+    //   return {
+    //     ...state,
+    //     isLoading: false,
+    //     errors: action.payload,
+    //   };
+    // //! POST MENU ITEM CASES
+    // case POST_MENU_ITEM_LOADING:
+    //   return {
+    //     ...state,
+    //     isLoading: true,
+    //     errors: '',
+    //   };
+    // case POST_MENU_ITEM_SUCCESS:
+    //   return {
+    //     ...state,
+    //     isLoading: false,
+    //     //TODO MISSING SUCCESS CASE
+    //   };
+    // case POST_MENU_ITEM_FAILURE:
+    //   return {
+    //     ...state,
+    //     isLoading: false,
+    //     errors: action.payload,
+    //   };
+    // //! PUT MENU ITEM CASES
+    // case PUT_MENU_ITEM_LOADING:
+    //   return {
+    //     ...state,
+    //     isLoading: true,
+    //     errors: '',
+    //   };
+    // case PUT_MENU_ITEM_SUCCESS:
+    //   return {
+    //     ...state,
+    //     isLoading: false,
+    //     //TODO MISSING SUCCESS CASE
+    //   };
+    // case PUT_MENU_ITEM_FAILURE:
+    //   return {
+    //     ...state,
+    //     isLoading: false,
+    //     errors: action.payload,
+    //   };
+    // //!DELETE MENU ITEM CASES
+    // case DELETE_MENU_ITEM_LOADING:
+    //   return {
+    //     ...state,
+    //     isLoading: true,
+    //     errors: '',
+    //   };
+    // case DELETE_MENU_ITEM_SUCCESS:
+    //   return {
+    //     ...state,
+    //     isLoading: false,
+    //     //TODO MISSING SUCCESS CASE
+    //   };
+    // case DELETE_MENU_ITEM_FAILURE:
+    //   return {
+    //     ...state,
+    //     isLoading: false,
+    //     errors: action.payload,
+    //   };
+    //!POST CUISINE CASES
     case POST_CUISINE_TYPE_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
     case POST_CUISINE_TYPE_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        allCuisineTypes: action.payload,
       };
     case POST_CUISINE_TYPE_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        errors: action.payload,
       };
+    //! PUT CUISINE CASES
     case PUT_CUISINE_TYPE_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
+
     case PUT_CUISINE_TYPE_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        allCuisineTypes: action.payload,
       };
     case PUT_CUISINE_TYPE_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        errors: action.payload,
       };
+    //!DELETE CUISINE CASES
     case DELETE_CUISINE_TYPE_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
     case DELETE_CUISINE_TYPE_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        allCuisineTypes: action.payload,
       };
     case DELETE_CUISINE_TYPE_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        errors: action.payload,
       };
+    //! GET CUISINE CASES
     case GET_CUISINE_TYPE_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
     case GET_CUISINE_TYPE_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        allCuisineTypes: action.payload,
       };
     case GET_CUISINE_TYPE_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        errors: action.payload,
       };
     default:
       return state;
