@@ -8,7 +8,7 @@ const SingleTruck = (props) => {
   const {
     truckName,
     currentLocation,
-    imageOfTruck,
+    truckImages,
     cuisineTypes,
     customerRatingAvg,
     customerRatings,
@@ -36,9 +36,28 @@ const SingleTruck = (props) => {
       <Panel>{truckName}</Panel>
       <Panel>{currentLocation}</Panel>
 
-      <img src={imageOfTruck} />
+      <img src={truckImages} alt="truckz" />
 
-      <Panel></Panel>
+      {cuisineTypes.map((cuisineTypeObj) => {
+        return (
+          <Panel key={cuisineTypeObj.cuisineTypeId}>
+            {cuisineTypeObj.cuisineTypeName}
+          </Panel>
+        );
+      })}
+      <Panel>{customerRatingAvg}</Panel>
+      {customerRatings.map((ratingsObj) => {
+        return (
+          <Panel>
+            {ratingsObj.username}
+            {ratingsObj.starRatings}
+          </Panel>
+        );
+      })}
+      <Panel>{arrivalDate}</Panel>
+      <Panel>{arrivalTime}</Panel>
+      <Panel>{departureDate}</Panel>
+      <Panel>{departureTime}</Panel>
     </Panel>
   );
 };
