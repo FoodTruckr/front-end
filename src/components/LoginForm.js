@@ -1,16 +1,40 @@
 import useForm from './../utils/useForm';
 import { TextField, Button, Panel } from 'react95';
+import { connect } from 'react-redux';
+import { loginUser } from '../actions/userAction';
+import { useHistory } from 'react-router';
+import { useEffect } from 'react';
 
 const initialValues = {
   username: '',
   password: '',
 };
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   const [{ username, password }, handleChange] = useForm(initialValues);
+  const { loginUser, user } = props;
+  const { push } = useHistory();
+  const { role, isLoggedIn } = user;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const creds = {
+      username: username,
+      password: password,
+    };
+    loginUser(creds);
+  };
+
+  useEffect(() => {
+    if (isLoggedIn && role === 'diner') {
+      push('/diner');
+    } else if (isLoggedIn && role === 'operator') {
+      push('/operator');
+    }
+  }, [role, isLoggedIn, push]);
 
   return (
-    <form style={{ width: '100%', marginTop: '10%' }}>
+    <form onSubmit={handleSubmit} style={{ width: '100%', marginTop: '10%' }}>
       <div style={{ textAlign: 'center', marginBottom: '2%', width: '100%' }}>
         <Panel type={{ textAlign: 'center' }} active>
           Log In!
@@ -45,4 +69,10 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps, { loginUser })(LoginForm);

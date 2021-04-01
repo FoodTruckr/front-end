@@ -11,11 +11,13 @@ import {
 const initialState = {
   userId: '',
   username: '',
-  role: '',
+  role: window.localStorage.getItem('role') || '',
   email: '',
   isLoading: false,
-  token: window.localStorage.getItem('token') || false,
+  token: window.localStorage.getItem('token') || '',
   error: '',
+  isSignedUp: false,
+  isLoggedIn: false,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -31,12 +33,15 @@ const userReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         username: action.payload.username,
+        userId: action.payload.userId,
+        isSignedUp: true,
       };
     case SIGNUP_FAILURE:
       return {
         ...state,
         isLoading: false,
         error: action.payload,
+        isSignedUp: false,
       };
     case LOGIN_LOADING:
       return {
@@ -47,6 +52,7 @@ const userReducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
+        isLoggedIn: true,
         isLoading: false,
         userId: action.payload.userId,
         username: action.payload.username,
@@ -67,7 +73,8 @@ const userReducer = (state = initialState, action) => {
         username: '',
         role: '',
         email: '',
-        token: window.localStorage.removeItem('token') || false,
+        token: window.localStorage.removeItem('token') || '',
+        isLoggedIn: false,
       };
     default:
       return state;
