@@ -16,7 +16,7 @@ const NavBar = () => {
   const [{ searchText }, handleChanges] = useForm('');
 
   return (
-    <AppBar>
+    <AppBar style={{zIndex: '1'}}>
       <Toolbar style={{ justifyContent: 'space-between' }}>
         <div style={{ position: 'relative', display: 'inline-block' }}>
           <Button
