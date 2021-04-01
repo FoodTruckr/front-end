@@ -81,36 +81,52 @@ const initialState = {
       ],
     },
   ],
+  allCuisineTypes: [],
   isLoading: false,
   errors: '',
 };
 
 const truckDinerReducer = (state = initialState, action) => {
   switch (action.type) {
+    //!DINER CASES
     case GET_DINER_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
     case GET_DINER_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        diner: action.payload,
       };
     case GET_DINER_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        errors: action.payload,
       };
+    //!DINER SINGLE TRUCK CASES
     case GET_DINER_SINGLE_TRUCK_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
     case GET_DINER_SINGLE_TRUCK_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        singleTruck: action.payload,
       };
     case GET_DINER_SINGLE_TRUCK_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        errors: action.payload,
       };
+    //!DINER MULTIPLE TRUCKS CASES
     case GET_DINER_ALL_TRUCK_LOADING:
       return {
         ...state,
@@ -129,77 +145,125 @@ const truckDinerReducer = (state = initialState, action) => {
         isLoading: false,
         error: action.payload,
       };
+    //! POST FAVORITE TRUCK CASES
     case POST_FAVORITE_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
     case POST_FAVORITE_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        diner: {
+          ...state.diner,
+          favoriteTrucks: action.payload,
+        },
       };
     case POST_FAVORITE_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        errors: action.payload,
       };
+    //! DELETE FAVORITE TRUCK CASES
     case DELETE_FAVORITE_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
     case DELETE_FAVORITE_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        diner: {
+          ...state.diner,
+          favoriteTrucks: action.payload,
+        },
       };
     case DELETE_FAVORITE_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        errors: action.payload,
       };
+    //!POST RATING CASES
     case POST_RATING_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
     case POST_RATING_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        //TODO may be missing success logic
       };
     case POST_RATING_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        errors: action.payload,
       };
+    //!PUT RATING CASES
     case PUT_RATING_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
     case PUT_RATING_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        //TODO may be missing success logic
       };
     case PUT_RATING_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        errors: action.payload,
       };
+    //!DELETE RATING CASES
     case DELETE_RATING_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
     case DELETE_RATING_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        //TODO may be missing success logic
       };
     case DELETE_RATING_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        errors: action.payload,
       };
+    //! GET CUISINE TYPE CASES
     case GET_CUISINE_TYPE_LOADING:
       return {
         ...state,
+        isLoading: true,
+        errors: '',
       };
     case GET_CUISINE_TYPE_SUCCESS:
       return {
         ...state,
+        isLoading: false,
+        allCuisineTypes: action.payload,
       };
     case GET_CUISINE_TYPE_FAILURE:
       return {
         ...state,
+        isLoading: false,
+        errors: action.payload,
       };
 
     default:

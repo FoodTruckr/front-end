@@ -8,7 +8,6 @@ import { useParams } from 'react-router';
 const OperatorLanding = (props) => {
   const { getOperator } = props;
   const { id } = useParams();
-  console.log('operator', props.operator.trucksOwned);
 
   useEffect(() => {
     getOperator(id);

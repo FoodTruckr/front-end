@@ -60,10 +60,10 @@ export const getDiner = (userId) => (dispatch) => {
   axiosWithAuth()
     .get(`/diner/${userId}`)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: GET_DINER_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({ type: GET_DINER_FAILURE, payload: err.response.data.message });
     });
 };
 
@@ -72,10 +72,13 @@ export const getSingleTruckDiner = (truckId) => (dispatch) => {
   axiosWithAuth()
     .get(`/trucks/${truckId}`)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: GET_DINER_SINGLE_TRUCK_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: GET_DINER_SINGLE_TRUCK_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -99,10 +102,13 @@ export const postFavoriteTruck = (userId) => (dispatch) => {
   axiosWithAuth()
     .post(`/diner/${userId}/favorites`)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: POST_FAVORITE_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: POST_FAVORITE_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -111,10 +117,13 @@ export const deleteFavoriteTruck = (truckId) => (dispatch) => {
   axiosWithAuth()
     .post(`/diner/${truckId}/favorites`)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: DELETE_FAVORITE_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: DELETE_FAVORITE_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -126,10 +135,13 @@ export const postDinerRating = (truckId, rating) => (dispatch) => {
       rating: rating,
     })
     .then((res) => {
-      console.log(res);
+      dispatch({ type: POST_RATING_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: POST_RATING_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -138,10 +150,13 @@ export const putDinerRating = (truckId, rating) => (dispatch) => {
   axiosWithAuth()
     .post(`/diner/${truckId}/ratings`, { truckId, rating })
     .then((res) => {
-      console.log(res);
+      dispatch({ type: PUT_RATING_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        Type: PUT_RATING_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -150,10 +165,13 @@ export const deleteDinerRating = (truckId) => (dispatch) => {
   axiosWithAuth()
     .post(`/diner/${truckId}/ratings`)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: DELETE_RATING_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: DELETE_RATING_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -162,9 +180,12 @@ export const getDinerCuisineTypes = () => (dispatch) => {
   axiosWithAuth()
     .get('/cuisines')
     .then((res) => {
-      console.log(res);
+      dispatch({ type: GET_CUISINE_TYPE_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: GET_CUISINE_TYPE_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };

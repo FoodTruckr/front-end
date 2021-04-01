@@ -7,6 +7,14 @@ export const GET_OPERATOR_LOADING = 'GET_OPERATOR_LOADING';
 export const GET_OPERATOR_SUCCESS = 'GET_OPERATOR_SUCCESS';
 export const GET_OPERATOR_FAILURE = 'GET_OPERATOR_FAILURE';
 
+//GET single truck
+export const GET_OPERATOR_SINGLE_TRUCK_LOADING =
+  'GET_OPERATOR_SINGLE_TRUCK_LOADING';
+export const GET_OPERATOR_SINGLE_TRUCK_SUCCESS =
+  'GET_OPERATOR_SINGLE_TRUCK_SUCCESS';
+export const GET_OPERATOR_SINGLE_TRUCK_FAILURE =
+  'GET_OPERATOR_SINGLE_TRUCK_FAILURE';
+
 // POST operator new truck
 export const POST_OPERATOR_TRUCK_LOADING = 'POST_OPERATOR_TRUCK_LOADING';
 export const POST_OPERATOR_TRUCK_SUCCESS = 'POST_OPERATOR_TRUCK_SUCCESS';
@@ -83,15 +91,33 @@ export const getOperator = (operatorId) => (dispatch) => {
     });
 };
 
+export const getSingleTruckOperator = (truckId) => (dispatch) => {
+  dispatch({ type: GET_OPERATOR_SINGLE_TRUCK_LOADING });
+  axiosWithAuth()
+    .get(`/trucks/${truckId}`)
+    .then((res) => {
+      dispatch({ type: GET_OPERATOR_SINGLE_TRUCK_SUCCESS, payload: res.data });
+    })
+    .catch((err) => {
+      dispatch({
+        type: GET_OPERATOR_SINGLE_TRUCK_FAILURE,
+        payload: err.response.data.message,
+      });
+    });
+};
+
 export const putTruckInfo = (operatorId, truckId) => (dispatch) => {
   dispatch({ type: PUT_TRUCK_INFO_LOADING });
   axiosWithAuth()
     .put(`/operator/${operatorId}/${truckId}`)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: PUT_TRUCK_INFO_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: PUT_TRUCK_INFO_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -100,10 +126,13 @@ export const postOperator = () => (dispatch) => {
   axiosWithAuth()
     .post(`/auth/new`)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: POST_OPERATOR_TRUCK_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: POST_OPERATOR_TRUCK_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -112,10 +141,13 @@ export const deleteOperatorTruck = (operatorId, truckId) => (dispatch) => {
   axiosWithAuth()
     .delete(`/operator/${operatorId}/${truckId}`)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: DELETE_OPERATOR_TRUCK_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: DELETE_OPERATOR_TRUCK_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -126,10 +158,13 @@ export const getMenuItems = (operatorId) => (dispatch) => {
   axiosWithAuth()
     .get(`/operator/${operatorId}/menu`)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: GET_MENU_ITEM_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: GET_MENU_ITEM_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -138,22 +173,28 @@ export const postMenuItem = (operatorId, item) => (dispatch) => {
   axiosWithAuth()
     .put(`/operator/${operatorId}/menu`, item)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: POST_MENU_ITEM_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: POST_MENU_ITEM_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
 export const putMenuItem = (operatorId, itemId, editedItem) => (dispatch) => {
-  dispatch({ type: POST_MENU_ITEM_LOADING });
+  dispatch({ type: PUT_MENU_ITEM_LOADING });
   axiosWithAuth()
     .put(`/operator/${operatorId}/menu/${itemId}`, editedItem)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: PUT_MENU_ITEM_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: PUT_MENU_ITEM_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -162,10 +203,13 @@ export const deleteMenuItem = (operatorId, itemId) => (dispatch) => {
   axiosWithAuth()
     .delete(`/operator/${operatorId}/menu/${itemId}`)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: DELETE_MENU_ITEM_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: DELETE_MENU_ITEM_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -176,10 +220,13 @@ export const getCuisines = () => (dispatch) => {
   axiosWithAuth()
     .get(`/operator/cuisines`)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: GET_CUISINE_TYPE_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: GET_CUISINE_TYPE_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -188,10 +235,13 @@ export const postCuisines = (operatorId, newCuisine) => (dispatch) => {
   axiosWithAuth()
     .post(`/operator/${operatorId}/cuisines`, newCuisine)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: POST_CUISINE_TYPE_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: POST_CUISINE_TYPE_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -202,10 +252,13 @@ export const putCuisines = (operatorId, cuisineTypeID, cuisineTypeName) => (
   axiosWithAuth()
     .post(`/operator/${operatorId}/cuisines/${cuisineTypeID}`, cuisineTypeName)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: PUT_CUISINE_TYPE_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: PUT_CUISINE_TYPE_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -214,9 +267,12 @@ export const deleteCuisines = (operatorId, cuisineTypeID) => (dispatch) => {
   axiosWithAuth()
     .delete(`/operator/${operatorId}/cuisines/${cuisineTypeID}`)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: DELETE_CUISINE_TYPE_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: DELETE_CUISINE_TYPE_FAILURE,
+        payload: err.response.data.message,
+      });
     });
 };
