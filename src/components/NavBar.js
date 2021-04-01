@@ -8,15 +8,15 @@ import {
   Divider,
   TextField,
 } from 'react95';
-
+import { connect } from 'react-redux';
 import useForm from '../utils/useForm';
 
-const NavBar = () => {
+const NavBar = (props) => {
   const [open, setOpen] = React.useState(false);
   const [{ searchText }, handleChanges] = useForm('');
 
   return (
-    <AppBar>
+    <AppBar style={{ zIndex: '1' }}>
       <Toolbar style={{ justifyContent: 'space-between' }}>
         <div style={{ position: 'relative', display: 'inline-block' }}>
           <Button
@@ -33,18 +33,22 @@ const NavBar = () => {
                 top: '100%',
               }}
               onClick={() => setOpen(false)}>
-              <ListItem>
-                <span role="img" aria-label="🚚">
-                  🚚
-                </span>
-                Show All Trucks
-              </ListItem>
-              <ListItem>
-                <span role="img" aria-label="🚛">
-                  🚛
-                </span>
-                Favorite Trucks
-              </ListItem>
+              {props.isLoggedIn && (
+                <ListItem>
+                  <span role="img" aria-label="🚚">
+                    🚚
+                  </span>
+                  Show All Trucks
+                </ListItem>
+              )}
+              {props.isLoggedIn && props.role && (
+                <ListItem>
+                  <span role="img" aria-label="🚛">
+                    🚛
+                  </span>
+                  Favorite Trucks
+                </ListItem>
+              )}
               <Divider />
               <ListItem disabled>
                 <span role="img" aria-label="🔙">
@@ -67,4 +71,11 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.user.isLoggedIn,
+    role: state.user.role,
+  };
+};
+
+export default connect(mapStateToProps, {})(NavBar);

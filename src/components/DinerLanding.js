@@ -4,7 +4,7 @@ import { getTrucksDiner } from '../actions/truckDinerAction';
 import { Panel } from 'react95';
 import TruckListItem from './TruckListItem';
 
-const DinerTruckList = (props) => {
+const DinerLanding = (props) => {
   const { getTrucksDiner } = props;
 
   useEffect(() => {
@@ -12,7 +12,15 @@ const DinerTruckList = (props) => {
   }, [getTrucksDiner]);
 
   return (
-    <Panel>
+    <Panel
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '500px',
+        transform: 'translate(460px)',
+        marginTop: '70px',
+      }}>
       {props.isLoading && <h1>Loading...</h1>}
       {props.error && <p>{props.error}</p>}
       {props.trucks.map((truck) => (
@@ -30,4 +38,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getTrucksDiner })(DinerTruckList);
+export default connect(mapStateToProps, { getTrucksDiner })(DinerLanding);

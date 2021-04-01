@@ -2,8 +2,13 @@ body {
   background: #008080;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 .App {
-  font-family: "Microsoft MS Sans Serif";
+  font-family: 'Microsoft MS Sans Serif';
 }
 
 .App header input {
@@ -12,5 +17,12 @@ body {
 
 .App .landing-page {
   margin-top: 45px;
+}
+
+.diner-landing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid red;
 }
 /*# sourceMappingURL=styles.css.map */
