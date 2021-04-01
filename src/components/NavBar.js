@@ -8,21 +8,27 @@ import {
   Divider,
   TextField,
 } from 'react95';
-
+import { connect } from 'react-redux';
 import useForm from '../utils/useForm';
+import logo from './../assets/logo.png';
 
-const NavBar = () => {
+const NavBar = (props) => {
   const [open, setOpen] = React.useState(false);
-  const [{ searchText }, handleChanges] = useForm('');
+  const [{ searchText }, handleChanges] = useForm('dasdfasji');
 
   return (
-    <AppBar style={{zIndex: '1'}}>
+    <AppBar style={{ zIndex: '1' }}>
       <Toolbar style={{ justifyContent: 'space-between' }}>
         <div style={{ position: 'relative', display: 'inline-block' }}>
           <Button
             onClick={() => setOpen(!open)}
             active={open}
             style={{ fontWeight: 'bold' }}>
+            <img
+              src={logo}
+              alt="react95 logo"
+              style={{ height: '20px', marginRight: 4 }}
+            />
             🛻 Start
           </Button>
           {open && (
@@ -33,18 +39,22 @@ const NavBar = () => {
                 top: '100%',
               }}
               onClick={() => setOpen(false)}>
-              <ListItem>
-                <span role="img" aria-label="🚚">
-                  🚚
-                </span>
-                Show All Trucks
-              </ListItem>
-              <ListItem>
-                <span role="img" aria-label="🚛">
-                  🚛
-                </span>
-                Favorite Trucks
-              </ListItem>
+              {props.isLoggedIn && (
+                <ListItem>
+                  <span role="img" aria-label="🚚">
+                    🚚
+                  </span>
+                  Show All Trucks
+                </ListItem>
+              )}
+              {props.isLoggedIn && props.role && (
+                <ListItem>
+                  <span role="img" aria-label="🚛">
+                    🚛
+                  </span>
+                  Favorite Trucks
+                </ListItem>
+              )}
               <Divider />
               <ListItem disabled>
                 <span role="img" aria-label="🔙">
@@ -67,4 +77,11 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.user.isLoggedIn,
+    role: state.user.role,
+  };
+};
+
+export default connect(mapStateToProps, {})(NavBar);

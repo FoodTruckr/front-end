@@ -2,13 +2,13 @@ body {
   background: #008080;
 }
 
-html,body { 
-  height:100%; 
+html,
+body {
+  height: 100%;
 }
 
 .App {
-  font-family: "Microsoft MS Sans Serif";
-  height:100%;
+  font-family: 'Microsoft MS Sans Serif';
   // NAVBAR
   header {
     input {
@@ -19,4 +19,8 @@ html,body {
   .landing-page {
     margin-top: 45px;
   }
+}
+.diner-landing {
+  display: flex;
+  border: 1px solid red;
 }
