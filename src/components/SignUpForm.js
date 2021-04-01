@@ -6,8 +6,13 @@ import {
   Window,
   WindowContent,
   Button,
-  Panel
+  Panel,
 } from 'react95';
+
+import { connect } from 'react-redux';
+import { signUpUser } from '../actions/userAction';
+import { useHistory } from 'react-router';
+import { useEffect } from 'react';
 
 const initialValues = {
   username: '',
@@ -16,17 +21,34 @@ const initialValues = {
   email: '',
 };
 
-const SignUpForm = () => {
+const SignUpForm = (props) => {
   const [{ username, email, role, password }, handleChange] = useForm(
     initialValues
   );
+  const { signUpUser, user } = props;
+  const { push } = useHistory();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const creds = {
+      username: username,
+      password: password,
+      role: role,
+      email: email,
+    };
+    signUpUser(creds);
+  };
+
+  useEffect(() => {
+    if (user.isSignedUp) {
+      push('/login');
+    }
+  }, [user.isSignedUp, push]);
 
   return (
-    <div style={{ width: '100%', marginTop: '10%' }}>
+    <form onSubmit={handleSubmit} style={{ width: '100%', marginTop: '10%' }}>
       <div style={{ textAlign: 'center', marginBottom: '2%', width: '100%' }}>
-        <Panel type={{ textAlign: 'center'}}>
-          Sign up Below!
-        </Panel>
+        <Panel type={{ textAlign: 'center' }}>Sign up Below!</Panel>
       </div>
       <div style={{ width: '200px', margin: '0 auto' }}>
         <div style={{ display: 'flex' }}>
@@ -75,11 +97,18 @@ const SignUpForm = () => {
                 Submit
               </Button>
             </Fieldset>
+            {user.error && <p>{user.error}</p>}
           </WindowContent>
         </Window>
       </div>
-    </div>
+    </form>
   );
 };
 
-export default SignUpForm;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps, { signUpUser })(SignUpForm);

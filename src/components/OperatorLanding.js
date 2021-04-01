@@ -3,15 +3,13 @@ import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import TruckListItem from './TruckListItem';
 import { getOperator } from '../actions/truckOperatorAction';
-import { useParams } from 'react-router';
 
 const OperatorLanding = (props) => {
   const { getOperator } = props;
-  const { id } = useParams();
 
   useEffect(() => {
-    getOperator(id);
-  }, [id, getOperator]);
+    getOperator();
+  }, [getOperator]);
 
   return (
     <Panel>

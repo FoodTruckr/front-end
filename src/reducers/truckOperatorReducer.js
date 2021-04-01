@@ -90,10 +90,7 @@ const truckOperatorReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        operator: {
-          ...state.operator,
-          trucksOwned: action.payload,
-        },
+        operator: action.payload,
       };
     case GET_OPERATOR_FAILURE:
       return {
@@ -183,25 +180,6 @@ const truckOperatorReducer = (state = initialState, action) => {
         isLoading: false,
         errors: action.payload,
       };
-    // //! GET MENU ITEM CASES TALK TO JAY ABOUT THIS
-    // case GET_MENU_ITEM_LOADING:
-    //   return {
-    //     ...state,
-    //     isLoading: true,
-    //     errors: '',
-    //   };
-    // case GET_MENU_ITEM_SUCCESS:
-    //   return {
-    //     ...state,
-    //     isLoading: false,
-
-    //   };
-    // case GET_MENU_ITEM_FAILURE:
-    //   return {
-    //     ...state,
-    //     isLoading: false,
-    //     errors: action.payload,
-    //   };
     // //! POST MENU ITEM CASES
     // case POST_MENU_ITEM_LOADING:
     //   return {

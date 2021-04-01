@@ -200,7 +200,7 @@ const truckDinerReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        //TODO may be missing success logic
+        //TODO may be missing success logic get back full array
       };
     case POST_RATING_FAILURE:
       return {
@@ -219,7 +219,7 @@ const truckDinerReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        //TODO may be missing success logic
+        //TODO may be missing success logic get back full array
       };
     case PUT_RATING_FAILURE:
       return {
@@ -238,7 +238,7 @@ const truckDinerReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        //TODO may be missing success logic
+        //TODO may be missing success logic get back full array without deleted
       };
     case DELETE_RATING_FAILURE:
       return {

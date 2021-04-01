@@ -16,32 +16,33 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 export const signUpUser = (signupCreds) => (dispatch) => {
   dispatch({ type: SIGNUP_LOADING });
   axiosWithAuth()
-    .post('/auth/new', signupCreds)
+    .post('/auth/register', signupCreds)
     .then((res) => {
-      console.log(res);
+      dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({ type: SIGNUP_FAILURE, payload: err.response.data.message });
     });
 };
 
 export const loginUser = (loginCreds) => (dispatch) => {
   window.localStorage.removeItem('token');
-  window.localStorage.removeItem('userInfo');
+  window.localStorage.removeItem('role');
   dispatch({ type: LOGIN_LOADING });
-
   axiosWithAuth()
     .post('/auth/login', loginCreds)
     .then((res) => {
-      console.log(res);
+      window.localStorage.setItem('token', res.data.token);
+      window.localStorage.setItem('role', res.data.role);
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({ type: LOGIN_FAILURE, payload: err.response.data.message });
     });
 };
 
 export const logoutUser = () => {
   window.localStorage.removeItem('token');
-  window.localStorage.removeItem('userInfo');
+  window.localStorage.removeItem('role');
   return { type: USER_LOGOUT };
 };

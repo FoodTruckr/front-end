@@ -55,10 +55,10 @@ export const GET_CUISINE_TYPE_LOADING = 'GET_CUISINE_TYPES_LOADING';
 export const GET_CUISINE_TYPE_SUCCESS = 'GET_CUISINE_TYPES_SUCCESS';
 export const GET_CUISINE_TYPE_FAILURE = 'GET_CUISINE_TYPES_FAILURE';
 
-export const getDiner = (userId) => (dispatch) => {
+export const getDiner = () => (dispatch) => {
   dispatch({ type: GET_DINER_LOADING });
   axiosWithAuth()
-    .get(`/diner/${userId}`)
+    .get(`/diner`)
     .then((res) => {
       dispatch({ type: GET_DINER_SUCCESS, payload: res.data });
     })
@@ -97,10 +97,10 @@ export const getTrucksDiner = () => (dispatch) => {
     });
 };
 
-export const postFavoriteTruck = (userId) => (dispatch) => {
+export const postFavoriteTruck = () => (dispatch) => {
   dispatch({ type: POST_FAVORITE_LOADING });
   axiosWithAuth()
-    .post(`/diner/${userId}/favorites`)
+    .post(`/diner/favorites`)
     .then((res) => {
       dispatch({ type: POST_FAVORITE_SUCCESS, payload: res.data });
     })
