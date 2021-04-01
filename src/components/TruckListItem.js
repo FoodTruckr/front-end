@@ -93,6 +93,7 @@ const TruckListItem = (props) => {
           ))}
         </Panel>
       </Panel>
+
     </div>
   );
 };
