@@ -93,10 +93,6 @@ const TruckListItem = (props) => {
           ))}
         </Panel>
       </Panel>
-<<<<<<< HEAD
-
-=======
->>>>>>> a6791ee8435516abc413e2bdc840ca9efc8c1ad9
     </div>
   );
 };
