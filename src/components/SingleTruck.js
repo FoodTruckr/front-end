@@ -2,6 +2,7 @@ import { Panel } from "react95";
 import { connect } from "react-redux";
 import { getSingleTruckDiner } from "../actions/truckDinerAction";
 import { useEffect } from "react";
+import { Menu } from './Menu';
 
 const SingleTruck = (props) => {
   const { getSingleTruckDiner, truck } = props;
@@ -16,6 +17,7 @@ const SingleTruck = (props) => {
     arrivalDate,
     departureTime,
     departureDate,
+    menu
   } = truck;
 
   useEffect(() => {
@@ -58,6 +60,11 @@ const SingleTruck = (props) => {
       <Panel>{arrivalTime}</Panel>
       <Panel>{departureDate}</Panel>
       <Panel>{departureTime}</Panel>
+      {menu.map((item) => {
+        return (
+          <Menu menu={item} />
+        )
+      })}
     </Panel>
   );
 };
