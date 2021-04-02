@@ -11,7 +11,7 @@ import { Route } from 'react-router-dom';
 import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
 import DinerLanding from './components/DinerLanding';
-import OperatorLanding from './components/OperatorLanding';
+// import OperatorLanding from './components/OperatorLanding';
 import SingleTruck from './components/SingleTruck';
 import { PrivateRoute } from './utils/PrivateRoute';
 import FavoriteBar from './components/FavoriteBar';
