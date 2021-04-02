@@ -10,15 +10,16 @@ const FavoriteBar = () => {
   const open = useSelector((state) => state.truckDiner.favoriteBarOpen);
 
   return (
-    <>
+  <Panel style={{width: '10%', textAlign: 'center', marginTop: '-2.8%', position: 'fixed'}}>
+      <Panel style={{margin: '5% 0 5% 0'}}>Your Favorite Trucks</Panel>
       {open && (
-        <Panel>
+        <Panel style={{width: '100%'}}>
           {favoriteTrucks.map((truck) => {
             return <Favorites key={uuidv4()} truck={truck} />;
           })}
         </Panel>
       )}
-    </>
+    </Panel>
   );
 };
 
