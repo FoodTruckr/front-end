@@ -61,6 +61,7 @@ const SingleTruck = (props) => {
           width: '50%',
           display: 'flex',
           margin: '100px auto',
+          marginBottom: '10px'
         }}>
         <div
           style={{
@@ -205,11 +206,21 @@ const SingleTruck = (props) => {
           </Panel>
         </div>
       </Panel>
+      <div style={{textAlign: 'center',}}>
+      <Panel style={{padding: '5px 10px',
+                margin: '10px auto'}}>Truck Menu</Panel>
+      <Panel style={{width: '50%', display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '0 auto'}}>
       {role === 'diner'
         ? dinerMenu.map((menuItem) => <Menu key={uuidv4()} menu={menuItem} />)
         : operatorMenu.map((menuItem) => (
             <Menu key={uuidv4()} menu={menuItem} />
           ))}
+      </Panel>
+      </div>
+      <div style={{textAlign: 'center', marginBottom: '2%'}}>
+      <Panel style={{padding: '5px 10px',
+                margin: '10px auto'}}>Customer Ratings</Panel>
+      <Panel style={{width: '50%', display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '0 auto'}}>
       {role === 'diner'
         ? dinerRatings.map((rating) => (
             <CustomerRatings key={uuidv4()} rating={rating} />
@@ -217,6 +228,8 @@ const SingleTruck = (props) => {
         : operatorRatings.map((rating) => (
             <CustomerRatings key={uuidv4()} rating={rating} />
           ))}
+      </Panel>
+      </div>
     </>
   );
 };
