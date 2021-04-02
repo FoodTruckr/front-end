@@ -58,12 +58,22 @@ const LoginForm = (props) => {
           type="password"
           value={password}
         />
-        <Button
-          style={{ marginLeft: '32%', marginTop: '5%' }}
-          type="submit"
-          primary>
-          Submit
-        </Button>
+        {!props.isLoading ? (
+          <Button
+            style={{ marginLeft: '32%', marginTop: '5%' }}
+            type="submit"
+            primary>
+            Submit
+          </Button>
+        ) : (
+          <p
+            style={{
+              textAlign: 'center',
+              marginTop: '5px',
+            }}>
+            Loading...
+          </p>
+        )}
       </div>
     </form>
   );
@@ -72,6 +82,7 @@ const LoginForm = (props) => {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    isLoading: state.user.isLoading,
   };
 };
 

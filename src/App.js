@@ -14,11 +14,13 @@ import DinerLanding from './components/DinerLanding';
 import OperatorLanding from './components/OperatorLanding';
 import SingleTruck from './components/SingleTruck';
 import { PrivateRoute } from './utils/PrivateRoute';
+import FavoriteBar from './components/FavoriteBar';
 
 // original Windows95 font (optionally)
 
 const App = () => (
   <div className="App">
+    <FavoriteBar />
     <GlobalStyles />
     <ThemeProvider theme={original}>
       <NavBar />

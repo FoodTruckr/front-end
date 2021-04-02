@@ -21,7 +21,7 @@ const TruckListItem = (props) => {
     } else if (role === 'operator') {
       push(`/operator/${truckId}`);
     } else {
-      alert('somethings wrong with role');
+      alert('Role incorrect.');
     }
   };
 
@@ -75,8 +75,7 @@ const TruckListItem = (props) => {
           }}>
           <p>CustomerRating:{customerRatingAvg} </p>
         </Panel>
-
-        {<h3>Cuisine Types</h3>}
+        <h3>Cuisine Types</h3>
         <Panel
           variant="well"
           style={{

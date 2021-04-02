@@ -1,27 +1,27 @@
-import useForm from "./../utils/useForm";
-import { TextField, Button, Panel } from "react95";
-import { connect } from "react-redux";
-import { useHistory } from "react-router";
-import { useEffect } from "react";
-import { putTruckInfo } from "../actions/truckOperatorAction";
+import useForm from './../utils/useForm';
+import { TextField, Button, Panel } from 'react95';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router';
+import { useEffect } from 'react';
+import { putTruckInfo } from '../actions/truckOperatorAction';
 
 const initialValues = {
-  truckId: "",
-  truckName: "",
-  currentLocation: "",
-  truckImages: "",
+  truckId: '',
+  truckName: '',
+  currentLocation: '',
+  truckImages: '',
   cuisineTypes: [
     {
-      cuisineTypeName: "",
-      cuisineTypeId: "",
+      cuisineTypeName: '',
+      cuisineTypeId: '',
     },
   ],
-  customerRatingAvg: "",
-  customerRatings: [{ username: "", starRatings: "" }],
-  arrivalTime: "",
-  arrivalDate: "",
-  departureTime: "",
-  departureDate: "",
+  customerRatingAvg: '',
+  customerRatings: [{ username: '', starRatings: '' }],
+  arrivalTime: '',
+  arrivalDate: '',
+  departureTime: '',
+  departureDate: '',
 };
 
 const EditFormTruck = (props) => {
@@ -50,7 +50,6 @@ const EditFormTruck = (props) => {
       currentLocation: currentLocation,
       truckImages: truckImages,
       cuisineTypes: cuisineTypes,
-      customerRatingAvg: customerRatingAvg,
       customerRatings: customerRatings,
       arrivalTime: arrivalTime,
       arrivalDate: arrivalDate,
@@ -75,6 +74,7 @@ const EditFormTruck = (props) => {
         value={truckName}
       />
       <TextField
+        placeholder="Image URL"
         onChange={handleChange}
         name="truckImages"
         type="text"
@@ -93,20 +93,6 @@ const EditFormTruck = (props) => {
         name="currentLocation"
         type="text"
         value={currentLocation}
-      />
-      <TextField
-        placeholder="Customer Rating Avg."
-        onChange={handleChange}
-        name="customerRatingAvg"
-        type="text"
-        value={customerRatingAvg}
-      />
-      <TextField
-        placeholder="Customer Ratings"
-        onChange={handleChange}
-        name="customerRatings"
-        type="text"
-        value={customerRatings}
       />
       <TextField
         placeholder="Arrival Time"
@@ -137,10 +123,9 @@ const EditFormTruck = (props) => {
         value={departureDate}
       />
       <Button
-        style={{ marginLeft: "32%", marginTop: "5%" }}
+        style={{ marginLeft: '32%', marginTop: '5%' }}
         type="submit"
-        primary
-      >
+        primary>
         Edit
       </Button>
     </form>
