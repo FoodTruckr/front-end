@@ -120,9 +120,8 @@ export const postFavoriteTruck = (truckId) => (dispatch) => {
 
 export const deleteFavoriteTruck = (truckId) => (dispatch) => {
   dispatch({ type: DELETE_FAVORITE_LOADING });
-  console.log('TRUCK ID OVER HERE', truckId);
   axiosWithAuth()
-    .delete(`/diner/favorites`, { truckId: 'zmkJne' })
+    .delete(`/diner/favorites`, { data: { truckId: 'zmkJne' } })
     .then((res) => {
       dispatch({
         type: DELETE_FAVORITE_SUCCESS,
