@@ -8,25 +8,32 @@ import {
   Divider,
   TextField,
 } from 'react95';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import useForm from '../utils/useForm';
 import logo from './../assets/logo.png';
 import { logoutUser } from '../actions/userAction';
 import { useHistory } from 'react-router';
+import { toggleFavoriteBar } from '../actions/truckDinerAction';
 
 const NavBar = (props) => {
   const [open, setOpen] = React.useState(false);
   const [{ searchText }, handleChanges] = useForm({ searchText: '' });
   const { push } = useHistory();
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
     props.logoutUser();
     push('/');
   };
+
   return (
     <AppBar style={{ zIndex: '1' }}>
       <Toolbar style={{ justifyContent: 'space-between' }}>
-        <div style={{ position: 'relative', display: 'inline-block' }}>
+        <div
+          style={{
+            position: 'relative',
+            display: 'inline-block',
+          }}>
           <Button
             onClick={() => setOpen(!open)}
             active={open}
@@ -55,7 +62,7 @@ const NavBar = (props) => {
                 </ListItem>
               )}
               {props.role === 'diner' ? (
-                <ListItem>
+                <ListItem onClick={() => dispatch(toggleFavoriteBar())}>
                   <span role="img" aria-label="🚛">
                     🚛
                   </span>
@@ -77,6 +84,22 @@ const NavBar = (props) => {
                     🔙
                   </span>
                   Logout
+                </ListItem>
+              )}
+              {!props.role && (
+                <ListItem onClick={() => push('/login')}>
+                  <span role="img" aria-label="🔜">
+                    🔜
+                  </span>
+                  LogIn
+                </ListItem>
+              )}
+              {!props.role && (
+                <ListItem onClick={() => push('/signup')}>
+                  <span role="img" aria-label="✉️">
+                    ✉️
+                  </span>
+                  SignUp
                 </ListItem>
               )}
             </List>

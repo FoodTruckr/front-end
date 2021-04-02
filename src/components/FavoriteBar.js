@@ -7,15 +7,18 @@ const FavoriteBar = () => {
   const favoriteTrucks = useSelector(
     (state) => state.truckDiner.diner.favoriteTrucks
   );
+  const open = useSelector((state) => state.truckDiner.favoriteBarOpen);
 
   return (
-    <div>
-      <Panel>
-        {favoriteTrucks.map((truck) => {
-          return <Favorites key={uuidv4()} truck={truck} />;
-        })}
-      </Panel>
-    </div>
+    <>
+      {open && (
+        <Panel>
+          {favoriteTrucks.map((truck) => {
+            return <Favorites key={uuidv4()} truck={truck} />;
+          })}
+        </Panel>
+      )}
+    </>
   );
 };
 
