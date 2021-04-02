@@ -44,7 +44,10 @@ const mapStateToProps = (state) => {
   return {
     isLoading: state.truckDiner.isLoading,
     error: state.truckDiner.errors,
-    trucks: state.truckDiner.trucks,
+    trucks:
+      state.user.role === 'diner'
+        ? state.truckDiner.trucks
+        : state.truckOperator.trucksOwned,
   };
 };
 

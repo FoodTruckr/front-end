@@ -1,33 +1,34 @@
-import useForm from "./../utils/useForm";
-import { TextField, Button, Panel } from "react95";
-import { connect } from "react-redux";
-import { useHistory } from "react-router";
-import { useEffect } from "react";
-import { putMenuItem } from "../actions/truckOperatorAction";
+import useForm from './../utils/useForm';
+import { TextField, Button, Panel } from 'react95';
+import { connect } from 'react-redux';
+import { useEffect } from 'react';
+import { putMenuItem } from '../actions/truckOperatorAction';
 
 const initialValues = {
-  menu: [{
-      itemName: '',
-      itemDescription: '',
-      itemPrice: '',
-      itemPhotoUrl: '',
-  }]
+  menu: {
+    itemName: '',
+    itemDescription: '',
+    itemPrice: '',
+    itemPhotoUrl: '',
+  },
 };
 
 const EditMenu = (props) => {
-  const [ { menu }, handleChange,] = useForm(initialValues);
+  const [
+    { itemName, itemDescription, itemPrice, itemPhotoUrl },
+    handleChange,
+  ] = useForm(initialValues);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const creds = {
-      menu: [{
-          itemName: itemName,
-          itemDescription: itemDescription,
-          itemPrice: itemPrice,
-          itemPhotoUrl: itemPhotoUrl,
-      }]
+      itemName: itemName,
+      itemDescription: itemDescription,
+      itemPrice: itemPrice,
+      itemPhotoUrl: itemPhotoUrl,
     };
-    putMenuItem(creds);
+
+    props.putMenuItem(creds);
   };
 
   useEffect(() => {});
@@ -42,34 +43,33 @@ const EditMenu = (props) => {
         onChange={handleChange}
         name="itemName"
         type="text"
-        value={menu.itemName}
+        value={itemName}
       />
       <TextField
-      placeholder="Description"
-        onChange={menu.handleChange}
+        placeholder="Description"
+        onChange={handleChange}
         name="itemDescription"
         type="text"
-        value={menu.itemDescription}
+        value={itemDescription}
       />
       <TextField
         placeholder="Price"
         onChange={handleChange}
         name="itemPrice"
         type="text"
-        value={menu.itemPrice}
+        value={itemPrice}
       />
       <TextField
         placeholder="Item Photo URL"
         onChange={handleChange}
         name="itemPhotoUrl"
         type="text"
-        value={menu.itemPhotoUrl}
+        value={itemPhotoUrl}
       />
       <Button
-        style={{ marginLeft: "32%", marginTop: "5%" }}
+        style={{ marginLeft: '32%', marginTop: '5%' }}
         type="submit"
-        primary
-      >
+        primary>
         Submit Menu
       </Button>
     </form>

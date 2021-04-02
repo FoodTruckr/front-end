@@ -97,10 +97,10 @@ export const getTrucksDiner = () => (dispatch) => {
     });
 };
 
-export const postFavoriteTruck = () => (dispatch) => {
+export const postFavoriteTruck = (truckId) => (dispatch) => {
   dispatch({ type: POST_FAVORITE_LOADING });
   axiosWithAuth()
-    .post(`/diner/favorites`)
+    .post(`/diner/${truckId}/favorites`)
     .then((res) => {
       dispatch({ type: POST_FAVORITE_SUCCESS, payload: res.data });
     })

@@ -43,8 +43,18 @@ const initialState = {
   singleTruck: {
     truckId: '',
     truckName: '',
-    currentLocation: '',
-    imageOfTruck: '',
+    currentLocation: {
+      address: '',
+      city: '',
+      state: '',
+      zipCode: '',
+    },
+    truckImages: [
+      {
+        truckPhotoId: '',
+        truckPhotoUrl: '',
+      },
+    ],
     cuisineTypes: [
       {
         cuisineTypeName: '',
@@ -52,13 +62,20 @@ const initialState = {
       },
     ],
     customerRatingAvg: '',
-    customerRatings: [{ username: '', starRatings: '' }],
+    customerRatings: [
+      {
+        username: '',
+        starRatings: '',
+        review: '',
+      },
+    ],
     arrivalTime: '',
     arrivalDate: '',
     departureTime: '',
     departureDate: '',
     menu: [
       {
+        itemId: '',
         itemName: '',
         itemDescription: '',
         itemPrice: '',
