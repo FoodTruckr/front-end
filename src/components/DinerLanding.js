@@ -3,14 +3,19 @@ import { useEffect } from 'react';
 import { getDiner, getTrucksDiner } from '../actions/truckDinerAction';
 import { Divider, Panel } from 'react95';
 import TruckListItem from './TruckListItem';
+import { getOperator } from '../actions/truckOperatorAction';
 
 const DinerLanding = (props) => {
-  const { getTrucksDiner, getDiner } = props;
+  const { getTrucksDiner, getDiner, role, getOperator } = props;
 
   useEffect(() => {
-    getTrucksDiner();
-    getDiner();
-  }, [getTrucksDiner, getDiner]);
+    if (role === 'diner') {
+      getTrucksDiner();
+      getDiner();
+    } else {
+      getOperator();
+    }
+  }, [getTrucksDiner, getDiner, role, getOperator]);
 
   return (
     <section
@@ -41,16 +46,25 @@ const DinerLanding = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return {
-    isLoading: state.truckDiner.isLoading,
-    error: state.truckDiner.errors,
-    trucks:
-      state.user.role === 'diner'
-        ? state.truckDiner.trucks
-        : state.truckOperator.trucksOwned,
-  };
+  if (state.user.role === 'diner') {
+    return {
+      role: state.user.role,
+      isLoading: state.truckDiner.isLoading,
+      error: state.truckDiner.errors,
+      trucks: state.truckDiner.trucks,
+    };
+  } else {
+    return {
+      role: state.user.role,
+      isLoading: state.truckOperator.isLoading,
+      error: state.truckOperator.errors,
+      trucks: state.truckOperator.trucksOwned,
+    };
+  }
 };
 
-export default connect(mapStateToProps, { getTrucksDiner, getDiner })(
-  DinerLanding
-);
+export default connect(mapStateToProps, {
+  getTrucksDiner,
+  getDiner,
+  getOperator,
+})(DinerLanding);
