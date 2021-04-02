@@ -21,6 +21,7 @@ const SingleTruck = (props) => {
     dinerRatings,
     operatorRatings,
     postFavoriteTruck,
+    favoriteTrucks,
   } = props;
   const {
     truckName,
@@ -48,7 +49,12 @@ const SingleTruck = (props) => {
   };
 
   const handleAddFavorite = () => {
-    postFavoriteTruck(truckId);
+    const duplicateTruck = favoriteTrucks.find(
+      (truck) => truck.truckId === truckId
+    );
+    if (!duplicateTruck) {
+      postFavoriteTruck(truckId);
+    }
   };
 
   useEffect(() => {
@@ -61,7 +67,7 @@ const SingleTruck = (props) => {
           width: '50%',
           display: 'flex',
           margin: '100px auto',
-          marginBottom: '10px'
+          marginBottom: '10px',
         }}>
         <div
           style={{
@@ -206,29 +212,47 @@ const SingleTruck = (props) => {
           </Panel>
         </div>
       </Panel>
-      <div style={{textAlign: 'center',}}>
-      <Panel style={{padding: '5px 10px',
-                margin: '10px auto'}}>Truck Menu</Panel>
-      <Panel style={{width: '50%', display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '0 auto'}}>
-      {role === 'diner'
-        ? dinerMenu.map((menuItem) => <Menu key={uuidv4()} menu={menuItem} />)
-        : operatorMenu.map((menuItem) => (
-            <Menu key={uuidv4()} menu={menuItem} />
-          ))}
-      </Panel>
+      <div style={{ textAlign: 'center' }}>
+        <Panel style={{ padding: '5px 10px', margin: '10px auto' }}>
+          Truck Menu
+        </Panel>
+        <Panel
+          style={{
+            width: '50%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            margin: '0 auto',
+          }}>
+          {role === 'diner'
+            ? dinerMenu.map((menuItem) => (
+                <Menu key={uuidv4()} menu={menuItem} />
+              ))
+            : operatorMenu.map((menuItem) => (
+                <Menu key={uuidv4()} menu={menuItem} />
+              ))}
+        </Panel>
       </div>
-      <div style={{textAlign: 'center', marginBottom: '2%'}}>
-      <Panel style={{padding: '5px 10px',
-                margin: '10px auto'}}>Customer Ratings</Panel>
-      <Panel style={{width: '50%', display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: '0 auto'}}>
-      {role === 'diner'
-        ? dinerRatings.map((rating) => (
-            <CustomerRatings key={uuidv4()} rating={rating} />
-          ))
-        : operatorRatings.map((rating) => (
-            <CustomerRatings key={uuidv4()} rating={rating} />
-          ))}
-      </Panel>
+      <div style={{ textAlign: 'center', marginBottom: '2%' }}>
+        <Panel style={{ padding: '5px 10px', margin: '10px auto' }}>
+          Customer Ratings
+        </Panel>
+        <Panel
+          style={{
+            width: '50%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            margin: '0 auto',
+          }}>
+          {role === 'diner'
+            ? dinerRatings.map((rating) => (
+                <CustomerRatings key={uuidv4()} rating={rating} />
+              ))
+            : operatorRatings.map((rating) => (
+                <CustomerRatings key={uuidv4()} rating={rating} />
+              ))}
+        </Panel>
       </div>
     </>
   );
@@ -237,6 +261,7 @@ const SingleTruck = (props) => {
 const mapStateToProps = (state) => {
   return {
     truck: state.truckDiner.singleTruck,
+    favoriteTrucks: state.truckDiner.diner.favoriteTrucks,
     error: state.truckDiner.errors,
     isLoading: state.truckDiner.isLoading,
     role: state.user.role,
