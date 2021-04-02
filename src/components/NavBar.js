@@ -11,11 +11,18 @@ import {
 import { connect } from 'react-redux';
 import useForm from '../utils/useForm';
 import logo from './../assets/logo.png';
+import { logoutUser } from '../actions/userAction';
+import { useHistory } from 'react-router';
 
 const NavBar = (props) => {
   const [open, setOpen] = React.useState(false);
-  const [{ searchText }, handleChanges] = useForm('dasdfasji');
+  const [{ searchText }, handleChanges] = useForm({ searchText: '' });
+  const { push } = useHistory();
 
+  const handleLogout = () => {
+    props.logoutUser();
+    push('/');
+  };
   return (
     <AppBar style={{ zIndex: '1' }}>
       <Toolbar style={{ justifyContent: 'space-between' }}>
@@ -39,29 +46,39 @@ const NavBar = (props) => {
                 top: '100%',
               }}
               onClick={() => setOpen(false)}>
-              {props.isLoggedIn && (
-                <ListItem>
+              {props.role && (
+                <ListItem onClick={() => push(`/${props.role}`)}>
                   <span role="img" aria-label="🚚">
                     🚚
                   </span>
                   Show All Trucks
                 </ListItem>
               )}
-              {props.isLoggedIn && props.role && (
+              {props.role === 'diner' ? (
                 <ListItem>
                   <span role="img" aria-label="🚛">
                     🚛
                   </span>
                   Favorite Trucks
                 </ListItem>
-              )}
+              ) : null}
+              {props.role === 'operator' ? (
+                <ListItem>
+                  <span role="img" aria-label="🚛">
+                    🚛
+                  </span>
+                  My Trucks
+                </ListItem>
+              ) : null}
               <Divider />
-              <ListItem disabled>
-                <span role="img" aria-label="🔙">
-                  🔙
-                </span>
-                Logout
-              </ListItem>
+              {props.role && (
+                <ListItem onClick={handleLogout}>
+                  <span role="img" aria-label="🔙">
+                    🔙
+                  </span>
+                  Logout
+                </ListItem>
+              )}
             </List>
           )}
         </div>
@@ -84,4 +101,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(NavBar);
+export default connect(mapStateToProps, { logoutUser })(NavBar);

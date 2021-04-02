@@ -73,7 +73,7 @@ const userReducer = (state = initialState, action) => {
         username: '',
         role: '',
         email: '',
-        token: window.localStorage.removeItem('token') || '',
+        token: '',
         isLoggedIn: false,
       };
     default:

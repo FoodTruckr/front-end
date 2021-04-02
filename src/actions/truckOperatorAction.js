@@ -82,6 +82,7 @@ export const getOperator = () => (dispatch) => {
     .get(`/operator/`)
     .then((res) => {
       dispatch({ type: GET_OPERATOR_SUCCESS, payload: res.data });
+      console.log('response', res.data);
     })
     .catch((err) => {
       dispatch({

@@ -86,7 +86,7 @@ const TruckListItem = (props) => {
             justifyContent: 'space-around',
             marginTop: '5px',
           }}>
-          {cuisineTypes.map((cuisineTypes) => (
+          {cuisineTypes?.map((cuisineTypes) => (
             <p key={cuisineTypes.cuisineTypeId}>
               {cuisineTypes.cuisineTypeName}
             </p>
