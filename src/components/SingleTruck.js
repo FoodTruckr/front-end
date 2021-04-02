@@ -4,13 +4,6 @@ import { getSingleTruckDiner } from '../actions/truckDinerAction';
 import { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router';
 
-import { Panel } from "react95";
-import { connect } from "react-redux";
-import { getSingleTruckDiner } from "../actions/truckDinerAction";
-import { useEffect } from "react";
-import { Menu } from './Menu';
-
-
 const SingleTruck = (props) => {
   const { getSingleTruckDiner, truck, role, isLoading } = props;
   const {
@@ -24,7 +17,6 @@ const SingleTruck = (props) => {
     departureTime,
     departureDate,
     customerRatings,
-
   } = truck;
   const { truckId } = useParams();
   const { address, city, state, zipCode } = currentLocation;
@@ -182,7 +174,6 @@ const SingleTruck = (props) => {
           </Panel>
         </Panel>
       </div>
-
     </Panel>
   );
 };
