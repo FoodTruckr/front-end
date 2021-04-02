@@ -34,7 +34,7 @@ const App = () => (
       </Route>
       <PrivateRoute path="/diner" component={FavoriteBar} />
       <PrivateRoute exact path="/diner" component={DinerLanding} />
-      <PrivateRoute exact path="/operator" component={OperatorLanding} />
+      <PrivateRoute exact path="/operator" component={DinerLanding} />
       <PrivateRoute exact path="/diner/:truckId" component={SingleTruck} />
       <PrivateRoute path="/operator/:truckId" component={SingleTruck} />
     </ThemeProvider>

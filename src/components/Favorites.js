@@ -8,10 +8,14 @@ const Favorites = (props) => {
 
   return (
     <>
-      <Panel key={uuidv4()} style={{width: '100%', padding: '5px', marginBottom: '10%' }}>
+      <Panel
+        key={uuidv4()}
+        style={{ width: '100%', padding: '5px', marginBottom: '10%' }}>
         <h3 key={uuidv4()}>{props.truck.truckName}</h3>
         <button
-          onClick={() => dispatch(deleteFavoriteTruck(props.truck.truckId))}>
+          onClick={() => {
+            return dispatch(deleteFavoriteTruck(props.truck.truckId));
+          }}>
           {'-- <3'}
         </button>
       </Panel>

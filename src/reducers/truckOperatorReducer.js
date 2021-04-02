@@ -124,7 +124,7 @@ const truckOperatorReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        error: action.payload,
+        errors: action.payload,
       };
     //! POST OPERATOR TRUCK CASES
     case POST_OPERATOR_TRUCK_LOADING:
