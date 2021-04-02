@@ -20,7 +20,6 @@ import FavoriteBar from './components/FavoriteBar';
 
 const App = () => (
   <div className="App">
-    <FavoriteBar />
     <GlobalStyles />
     <ThemeProvider theme={original}>
       <NavBar />
@@ -33,6 +32,7 @@ const App = () => (
       <Route path="/signup">
         <SignUpForm />
       </Route>
+      <PrivateRoute path="/diner" component={FavoriteBar} />
       <PrivateRoute exact path="/diner" component={DinerLanding} />
       <PrivateRoute exact path="/operator" component={OperatorLanding} />
       <PrivateRoute exact path="/diner/:truckId" component={SingleTruck} />

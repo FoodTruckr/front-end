@@ -31,6 +31,9 @@ export const DELETE_FAVORITE_SUCCESS = 'DELETE_FAVORITE_SUCCESS';
 export const DELETE_FAVORITE_FAILURE = 'DELETE_FAVORITE_FAILURE';
 export const DELETE_FAVORITE_LOADING = 'DELETE_FAVORITE_LOADING';
 
+//OPEN Favorite Bar
+export const TOGGLE_FAVORITE_BAR = 'TOGGLE_FAVORITE_BAR';
+
 //!RATING ACTION TYPES
 
 // POST customer rating
@@ -100,9 +103,12 @@ export const getTrucksDiner = () => (dispatch) => {
 export const postFavoriteTruck = (truckId) => (dispatch) => {
   dispatch({ type: POST_FAVORITE_LOADING });
   axiosWithAuth()
-    .post(`/diner/${truckId}/favorites`)
+    .post(`/diner/favorites`, { truckId: truckId })
     .then((res) => {
-      dispatch({ type: POST_FAVORITE_SUCCESS, payload: res.data });
+      dispatch({
+        type: POST_FAVORITE_SUCCESS,
+        payload: res.data.favoriteTrucks,
+      });
     })
     .catch((err) => {
       dispatch({
@@ -115,14 +121,17 @@ export const postFavoriteTruck = (truckId) => (dispatch) => {
 export const deleteFavoriteTruck = (truckId) => (dispatch) => {
   dispatch({ type: DELETE_FAVORITE_LOADING });
   axiosWithAuth()
-    .post(`/diner/${truckId}/favorites`)
+    .delete(`/diner/favorites`, { truckId: truckId })
     .then((res) => {
-      dispatch({ type: DELETE_FAVORITE_SUCCESS, payload: res.data });
+      dispatch({
+        type: DELETE_FAVORITE_SUCCESS,
+        payload: res.data.favoriteTrucks,
+      });
     })
     .catch((err) => {
       dispatch({
         type: DELETE_FAVORITE_FAILURE,
-        payload: err.response.data.message,
+        payload: err,
       });
     });
 };
@@ -188,4 +197,8 @@ export const getDinerCuisineTypes = () => (dispatch) => {
         payload: err.response.data.message,
       });
     });
+};
+
+export const toggleFavoriteBar = () => {
+  return { type: TOGGLE_FAVORITE_BAR };
 };

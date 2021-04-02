@@ -26,6 +26,7 @@ import {
   GET_CUISINE_TYPE_LOADING,
   GET_CUISINE_TYPE_SUCCESS,
   GET_CUISINE_TYPE_FAILURE,
+  TOGGLE_FAVORITE_BAR,
 } from '../actions/truckDinerAction';
 
 const initialState = {
@@ -101,6 +102,7 @@ const initialState = {
   allCuisineTypes: [],
   isLoading: false,
   errors: '',
+  favoriteBarOpen: false,
 };
 
 const truckDinerReducer = (state = initialState, action) => {
@@ -177,6 +179,12 @@ const truckDinerReducer = (state = initialState, action) => {
           ...state.diner,
           favoriteTrucks: action.payload,
         },
+        favoriteBarOpen: true,
+      };
+    case TOGGLE_FAVORITE_BAR:
+      return {
+        ...state,
+        favoriteBarOpen: !state.favoriteBarOpen,
       };
     case POST_FAVORITE_FAILURE:
       return {
