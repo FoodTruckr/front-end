@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { getDiner, getTrucksDiner } from '../actions/truckDinerAction';
-import { Divider, Panel } from 'react95';
+import { Divider, Panel, Hourglass } from 'react95';
 import TruckListItem from './TruckListItem';
 import { getOperator } from '../actions/truckOperatorAction';
 
@@ -32,14 +32,17 @@ const DinerLanding = (props) => {
           // transform: 'translate(460px)',
           marginTop: '70px',
         }}>
-        {props.isLoading && <h1>Loading...</h1>}
-        {props.error && <p>{props.error}</p>}
-        {props.trucks.map((truck) => (
-          <>
-            <TruckListItem key={truck.truckId} truck={truck} />
-            <Divider key={new Date()} />
-          </>
-        ))}
+        {props.isLoading
+          ? <Hourglass />
+          : <>
+            {props.error && <p>{props.error}</p>}
+            {props.trucks.map((truck) => (
+              <>
+                <TruckListItem key={truck.truckId} truck={truck} />
+                <Divider key={new Date()} />
+              </>
+            ))}
+          </>}
       </Panel>
     </section>
   );
@@ -58,7 +61,7 @@ const mapStateToProps = (state) => {
       role: state.user.role,
       isLoading: state.truckOperator.isLoading,
       error: state.truckOperator.errors,
-      trucks: state.truckOperator.trucksOwned,
+      trucks: state.truckOperator.operator.trucksOwned,
     };
   }
 };
