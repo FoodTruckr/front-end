@@ -82,7 +82,7 @@ const initialState = {
     ],
   },
   allCuisineTypes: [],
-  isLoading: false,
+  isLoading: true,
   errors: '',
 };
 
