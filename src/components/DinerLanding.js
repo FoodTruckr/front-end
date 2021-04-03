@@ -32,17 +32,22 @@ const DinerLanding = (props) => {
           // transform: 'translate(460px)',
           marginTop: '70px',
         }}>
-        {props.isLoading
-          ? <Hourglass />
-          : <>
+        {props.isLoading ? (
+          <Hourglass />
+        ) : (
+          <>
             {props.error && <p>{props.error}</p>}
-            {props.trucks.map((truck) => (
+            {props.trucks === null ? (
+              <h2>Looks like you don't have a truck!</h2>
+            ) : null}
+            {props.trucks?.map((truck) => (
               <>
                 <TruckListItem key={truck.truckId} truck={truck} />
                 <Divider key={new Date()} />
               </>
             ))}
-          </>}
+          </>
+        )}
       </Panel>
     </section>
   );
